@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-09T12:58:55",
-  "count": 5,
+  "generated_at": "2026-08-09T17:18:22",
+  "count": 50,
   "candidates": [
     {
       "name": "Cloud 66",
@@ -30,6 +30,276 @@
       "name": "Apify",
       "url": "https://www.apify.com/",
       "desc": "Web scraping and automation platform to create an API for any website and extract data. Ready-made scrapers, integrated proxies, and custom solutions. Free plan",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "APITemplate.io",
+      "url": "https://apitemplate.io",
+      "desc": "Auto-generate images and PDF documents with a simple API or automation tools like Zapier & Airtable. No CSS/HTML is required. The free plan comes with 50 images",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "APIVerve",
+      "url": "https://apiverve.com",
+      "desc": "Get instant access to over 120+ APIs for free, built with quality, consistency, and reliability in mind. The free plan covers up to 50 API Tokens per month. (Po",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Brave Search API",
+      "url": "https://brave.com/search/api/",
+      "desc": "Independent web, news, image, video search and AI/LLM context API, suitable for RAG pipelines and AI agents. Free tier includes $5 in monthly credits (credit ca",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "CarAPI.dev",
+      "url": "https://carapi.dev",
+      "desc": "Comprehensive automotive data API with VIN decoding, stolen vehicle checks, vehicle valuation, inspection data, and more. Free tier includes 100 requests/month ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "CatchDoms",
+      "url": "https://catchdoms.com",
+      "desc": "Aggregator of expired and dropping domain listings from 16 marketplaces, with SEO enrichment (backlinks, Trust Flow, Wayback history) and a quality score. Free ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "CometML",
+      "url": "https://www.comet.com/site/",
+      "desc": "The MLOps platform for experiment tracking, model production management, model registry, and complete data lineage, covering your workflow from training to prod",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Conversion Tools",
+      "url": "https://conversiontools.io/",
+      "desc": "Online File Converter for documents, images, video, audio, and eBooks. REST API is available. Libraries for Node.js, PHP, Python. Support files up to 50 GB (for",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Country-State-City Microservice API",
+      "url": "https://country-state-city.rebuscando.info/",
+      "desc": "API and Microservice to provides a wide range of information including countries, regions, provinces, cities, postal codes, and much more. The free tier include",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Coupler",
+      "url": "https://www.coupler.io/",
+      "desc": "Data integration tool that syncs between apps. It can create live dashboards and reports, transform and manipulate values, and collect and back up insights. The",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Data Fetcher",
+      "url": "https://datafetcher.com",
+      "desc": "Connect Airtable to any application or API with no code. Postman-like interface for running API requests in Airtable. Pre-built integrations with dozens of apps",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Deepnote",
+      "url": "https://deepnote.com",
+      "desc": "A new data science notebook. Jupyter is compatible with real-time collaboration and running in the cloud. The free tier includes unlimited personal projects, un",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Export SDK",
+      "url": "https://exportsdk.com",
+      "desc": "PDF generator API with drag-and-drop template editor that provides an SDK and no-code integrations. The free plan has 250 monthly pages, unlimited users, and th",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Firecrawl",
+      "url": "https://www.firecrawl.dev/",
+      "desc": "API that crawls websites and converts them into clean, LLM-ready markdown or structured data, handling JavaScript rendering, proxies, and rate limits. The free ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Inngest",
+      "url": "https://www.inngest.com",
+      "desc": "Durable execution and event-driven workflows for TypeScript, Python, and Go. Hobby plan is free with 50k executions/month, 5 concurrent steps, 500k events inges",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "IP2Location.io",
+      "url": "https://www.ip2location.io/",
+      "desc": "Freemium, fast, and reliable IP geolocation API. Get data like city, coordinates, ISP, ASN, AS data and more. The free plan includes 50k credits per month. IP2L",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "ip2geo.dev",
+      "url": "https://ip2geo.dev",
+      "desc": "IP geolocation API to convert IP addresses into location data including city, country, timezone, ASN, and currency. The free plan includes 1,000 requests per mo",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "ipapi.is",
+      "url": "https://ipapi.is/",
+      "desc": "A reliable IP Address API from Developers for Developers with the best Hosting Detection capabilities that exist. The free plan offers 1000 lookups without sign",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "ipapi",
+      "url": "https://ipapi.co/",
+      "desc": "IP Address Location API by Kloudend, Inc - A reliable geolocation API built on AWS, trusted by Fortune 500. The free tier offers 30k lookups/month (1k/day) with",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "JSON IP",
+      "url": "https://getjsonip.com",
+      "desc": "Returns the Public IP address of the client it is requested from. No registration is required for the free tier. Using CORS, data can be requested using client-",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Market Data API",
+      "url": "https://www.marketdata.app",
+      "desc": "Provides real-time and historical financial data for stocks, options, mutual funds, and more. The Free Forever API tier allows for 100 daily API requests at no ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Maxim AI",
+      "url": "https://getmaxim.ai/",
+      "desc": "Simulate, evaluate, and observe your AI agents. Maxim is an end-to-end evaluation and observability platform, helping teams ship their AI agents reliably and >5",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Mockfly",
+      "url": "https://www.mockfly.dev/",
+      "desc": "Mockfly is a trusted development tool for API mocking and feature flag management. Quickly generate and control mock APIs with an intuitive interface. The free ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "PDF-API.io",
+      "url": "https://pdf-api.io",
+      "desc": "PDF Automation API, visual template editor or HTML to PDF, dynamic data integration, and PDF rendering with an API. The free plan comes with one template, 100 P",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Postman",
+      "url": "https://postman.com",
+      "desc": "Simplify workflows and create better APIs - faster - with Postman, a collaboration platform for API development. Use the Postman App for free forever. Postman c",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Preset Cloud",
+      "url": "https://preset.io/",
+      "desc": "A hosted Apache Superset service. Forever free for teams of up to 5 users, featuring unlimited dashboards and charts, a no-code chart builder, and a collaborati",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Reducto",
+      "url": "https://reducto.ai",
+      "desc": "Turn any unstructured documents (PDF, XLSX, JPG, PPTX, etc.) into structured JSON data. Parse, extract data, and edit PDF forms. Free tier with 15k free credits",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "SerpApi",
+      "url": "https://serpapi.com/",
+      "desc": "Real-time search engine scraping API. Returns structured JSON results for Google, YouTube, Bing, Baidu, Walmart, and many other machines. The free plan includes",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Geekflare API",
+      "url": "https://geekflare.com/api/",
+      "desc": "Geekflare API lets you scrape websites into Markdown, take screenshots, perform TLS scans and DNS lookups, test load times, and more. The free plan offers 500 A",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "SmartParse",
+      "url": "https://smartparse.io",
+      "desc": "SmartParse is a data migration and CSV to API platform that offers time- and cost-saving developer tools. The Free tier includes 300 Processing Units per month,",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Sofodata",
+      "url": "https://www.sofodata.com/",
+      "desc": "Create secure RESTful APIs from CSV files. Upload a CSV file and instantly access the data via its API allowing faster application development. The free plan in",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Tavily AI",
+      "url": "https://tavily.com/",
+      "desc": "API for online search and rapid insights and comprehensive research, with the capability of organization of research results. 1000 request/month for the Free ti",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Trophy",
+      "url": "https://trophy.so",
+      "desc": "Trophy is the gamification layer for consumer apps. Use pre-built APIs and open-source UI components to ship achievements, streaks, points, leaderboards and mor",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "vatnode",
+      "url": "https://vatnode.dev",
+      "desc": "EU VAT number validation REST API with VIES and national tax-registry fallback, returning the official VIES consultation number for audit records. Free tier of ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Weights & Biases",
+      "url": "https://wandb.ai",
+      "desc": "The developer-first MLOps platform. Build better models faster with experiment tracking, dataset versioning, and model management. Free tier for personal projec",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Zenscrape",
+      "url": "https://zenscrape.com/web-scraping-api",
+      "desc": "Web scraping API with headless browsers, residentials IPs, and straightforward pricing. One thousand free API calls/month and extra credits for students and non",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Zuplo",
+      "url": "https://zuplo.com/",
+      "desc": "Free API Management platform to design, build, and deploy APIs to the Edge. Add API Key authentication, rate limiting, developer documentation and Monetization ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Metashot",
+      "url": "https://metashot.io",
+      "desc": "Open Graph (OG) social preview image generation API. Generate dynamic 1200×630 images for Twitter, LinkedIn and Facebook via URL params, edge-cached on Cloudfla",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Calendly",
+      "url": "https://calendly.com",
+      "desc": "Calendly is the tool for connecting and scheduling meetings. The free plan provides 1 Calendar connection per user and Unlimited sessions. Desktop and Mobile ap",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "cDox",
+      "url": "https://cdox.ca",
+      "desc": "Private document editor hosted in Canada. Write, format, collaborate, and publish documents with clean public links. Data is never used for AI training. Free pl",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Chanty.com",
+      "url": "https://chanty.com/",
+      "desc": "Chanty is another alternative to Slack. It has a free forever plan for small teams (up to 10) with unlimited public and private conversations, searchable histor",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Fizzy",
+      "url": "https://www.fizzy.do/",
+      "desc": "Kanban-based platform for project management and issue tracking. Create public boards, set up webhooks, use card stamping, and track unlimited users - free for ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "GhostChat",
+      "url": "https://ghostchat.dev",
+      "desc": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking). Free plan includes 1 site, unlimited messages, 30-day history, Gmail threading, ca",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "GitDailies",
+      "url": "https://gitdailies.com",
+      "desc": "Daily reports of your team's Commit and Pull Request activity on GitHub. Includes Push visualizer, peer recognition system, and custom alert builder. The free t",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Teamhood",
+      "url": "https://teamhood.com/",
+      "desc": "Free Project, Task, and Issue-tracking software. Supports Kanban with Swimlanes and full Scrum implementation. Has integrated time tracking. Free for five users",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Teamplify",
+      "url": "https://teamplify.com",
+      "desc": "improve team development processes with Team Analytics and Smart Daily Standup. Includes full-featured Time Off management for remote-first teams. Free for smal",
       "source": "free-for-dev"
     }
   ]
