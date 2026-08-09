@@ -1,8 +1,38 @@
-# Free Token Hunter · 免费额度猎手
+<p align="center">
+  <img src="https://img.shields.io/badge/channels-41-blue?style=flat-square" alt="channels" />
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white" alt="python" />
+  <img src="https://img.shields.io/badge/dependencies-zero-2ea043?style=flat-square" alt="zero deps" />
+  <img src="https://img.shields.io/github/last-commit/hb250625-dotcom/free-token-hunter?style=flat-square" alt="last commit" />
+  <img src="https://github.com/hb250625-dotcom/free-token-hunter/actions/workflows/daily-discover.yml/badge.svg" alt="ci" />
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license" />
+</p>
 
-一个**零第三方依赖**（仅用 Python 3 标准库 `argparse` / `json` / `urllib` / `pathlib`）的命令行工具，自动汇总互联网上各类提供**免费 token / 额度**的渠道（大模型 API、云服务、学生福利、免费算力），为每个渠道生成清晰的引导流程（注册 → 订阅 → 领取），并帮助用户**逐步完成领取、记录进度、实测 Key 可用性**。
+<h1 align="center">Free Token Hunter · 免费额度猎手</h1>
+
+<p align="center">
+  <b>零依赖 CLI · 汇总并引导领取各大平台的免费 token / 额度</b><br />
+  <i>国内 / 海外大模型 API · 云服务 · 学生福利 · 免费算力</i>
+</p>
+
+---
+
+一个**零第三方依赖**（仅用 Python 3 标准库 `argparse` / `json` / `urllib` / `pathlib`）的命令行工具，自动汇总互联网上各类提供**免费 token / 额度**的渠道，为每个渠道生成清晰的引导流程（注册 → 订阅 → 领取），并帮助用户**逐步完成领取、记录进度、实测 Key 可用性**。
 
 > 项目目标：把分散在官网 / 社区 / 清单仓库里的「免费额度获取方式」整理成一份可检索、可引导、可验证的结构化知识库，并尽量自动化「逐个领取」的过程。
+
+## 目录
+
+- [特性](#特性)
+- [目录结构](#目录结构)
+- [快速开始](#快速开始)
+- [命令详解](#命令详解)
+  - [list](#list) · [show](#show) · [plan](#plan) · [guide](#guide) · [status](#status) · [verify](#verify) · [export](#export) · [discover](#discover)
+- [渠道数据格式](#渠道数据格式)
+- [安全与合规提醒](#安全与合规提醒)
+- [已知限制](#已知限制)
+- [维护建议](#维护建议)
+- [贡献指南](#贡献指南)
+- [许可证](#许可证)
 
 ---
 
@@ -41,6 +71,7 @@ free-token-hunter/
 │   ├── discovered.json        # discover 发现结果
 │   └── keys.local.env         # 本地密钥库（不入库）
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -65,13 +96,14 @@ python hunter.py guide
 python hunter.py status
 ```
 
-> **Windows / 环境提示**：建议用本机受管 Python（3.11+）。若在受限沙箱里跑，需要联网的命令（`discover`、`verify` 真实请求）要允许出网。`.env` 与 `out/` 已被 `.gitignore` 排除，密钥不会误提交。
+> **Windows / 环境提示**：建议用本机 Python 3.8+。若在受限沙箱里跑，需要联网的命令（`discover`、`verify` 真实请求）要允许出网。`.env` 与 `out/` 已被 `.gitignore` 排除，密钥不会误提交。
 
 ---
 
 ## 命令详解
 
-### `list` —— 列出渠道
+### list
+
 ```
 python hunter.py list [--region cn|global] [--category llm-api|aggregator|cloud|compute|student]
                       [--no-card] [--no-vpn] [--student] [--exclude-student]
@@ -79,19 +111,22 @@ python hunter.py list [--region cn|global] [--category llm-api|aggregator|cloud|
 ```
 按筛选条件打印表格（名称 / 地区 / 分类 / 难度 / 推荐分 / 关键需求）。
 
-### `show <id>` —— 查看单个渠道完整引导
+### show
+
 ```
 python hunter.py show zhipu-bigmodel
 ```
 打印注册步骤、领取步骤、验证方式、提示与风险。
 
-### `plan` —— 生成个性化路线
+### plan
+
 ```
 python hunter.py plan [--top 12]
 ```
 交互问答（网络、绑卡、学生、用途）后，按加权分输出最优领取顺序，写入 `out/plan.json`。
 
-### `guide` —— 分步引导并记录进度
+### guide
+
 ```
 python hunter.py guide [<id>] [--all]
 ```
@@ -100,19 +135,22 @@ python hunter.py guide [<id>] [--all]
 - 交互键：`d`=标记已完成 / `s`=进行中 / `k`=跳过 / `b`=回看上一步 / `q`=退出。
 - 进度写入 `out/progress.json`。
 
-### `status` —— 领取进度与到期提醒
+### status
+
 ```
 python hunter.py status [-v]
 ```
 统计「已领取 / 进行中 / 未开始」，并列出临近到期的渠道（`-v` 显示每个渠道详情）。
 
-### `verify` —— 实测 API Key
+### verify
+
 ```
 python hunter.py verify [<id>] [--no-record]
 ```
 读取 `out/keys.local.env` 中对应 `env` 的 Key，对 `verify.base_url` 发一次 `/chat/completions` 真实请求，返回可用 / 不可用。**仅支持 `type: openai_compatible` 的渠道。**
 
-### `export` —— 导出报告
+### export
+
 ```
 python hunter.py export [--format md|html|json|all]   # 默认 all
 ```
@@ -121,7 +159,8 @@ python hunter.py export [--format md|html|json|all]   # 默认 all
 - `json` → `out/channels.merged.json`
 - `all` → 三个都生成。
 
-### `discover` —— 联网发现未收录渠道
+### discover
+
 ```
 python hunter.py discover [--top 30] [--no-search]
 ```
@@ -197,3 +236,21 @@ python hunter.py discover [--top 30] [--no-search]
 - 每季度跑一次 `python hunter.py discover` 找新渠道，审阅后合入 `custom_channels.json`。
 - 领取后及时 `status` 查看到期日，临近过期的额度优先用掉。
 - 想扩展更多国家 / 更多类别，直接在 `data/` 增加 `0N-*.json` 并补 `CATEGORY_LABEL`（在 `hunter.py` 内）即可。
+
+---
+
+## 贡献指南
+
+欢迎通过 Issue / PR 完善渠道数据或功能。提交前请确认：
+
+1. **数据源真实**：新增渠道的 `url` / `claim_url` 可访问，额度与有效期尽量标注来源或「以官网为准」。
+2. **数据结构完整**：渠道字段尽量填全（尤其 `id` 唯一、`category` / `region` / `needs` / `score`）。
+3. **本地自测**：`python hunter.py list` 能正常加载，`python hunter.py show <id>` 无报错。
+4. **不要提交密钥**：`out/keys.local.env` 与 `*.env` 已被 `.gitignore` 排除，请勿强制添加。
+5. **分支约定**：功能用 `feat/xxx`，修复用 `fix/xxx`，PR 目标 `main`。
+
+---
+
+## 许可证
+
+本项目以 [MIT 许可证](./LICENSE) 开源。
