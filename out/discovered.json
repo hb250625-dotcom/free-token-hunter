@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-08-09T12:58:55",
+  "count": 5,
+  "candidates": [
+    {
+      "name": "Cloud 66",
+      "url": "https://www.cloud66.com/",
+      "desc": "Free for personal projects (includes one deployment server, one static site), Cloud 66 gives you everything you need to build, deploy, and grow your application",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "deployment.io",
+      "url": "https://deployment.io",
+      "desc": "Deployment.io helps developers automate deployments on AWS. On our free tier, a developer (single user) can deploy unlimited static sites, web services, and env",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "GitGud",
+      "url": "https://gitgud.io",
+      "desc": "Unlimited private and public repositories. Free forever. Powered by GitLab & Sapphire. Includes CI/CD, Static Hosting, Container Registry, Project Management an",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "AlphaAI",
+      "url": "https://alphai.io/developers",
+      "desc": "Financial news API and MCP server. Every article gets per-ticker impact analysis, a category, and a 1-10 relevance score, and SEC Form 4 insider filings are tur",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Apify",
+      "url": "https://www.apify.com/",
+      "desc": "Web scraping and automation platform to create an API for any website and extract data. Ready-made scrapers, integrated proxies, and custom solutions. Free plan",
+      "source": "free-for-dev"
+    }
+  ]
+}

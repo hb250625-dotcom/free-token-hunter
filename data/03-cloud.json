@@ -1,0 +1,264 @@
+{
+  "pack": "云服务 / 部署 / 数据库免费额度",
+  "pack_id": "cloud",
+  "note": "云厂商免费额度分三类：Always Free（永久）、时限试用（12 个月/90 天）、赠金型（$ 额度）。最大的坑是「试用到期自动转按量付费」，务必设预算告警。",
+  "channels": [
+    {
+      "id": "oracle-cloud-free",
+      "name": "Oracle Cloud Always Free (OCI)",
+      "aka": ["甲骨文", "OCI", "甲骨文小鸡"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://www.oracle.com/cloud/free/",
+      "claim_url": "https://signup.cloud.oracle.com",
+      "docs_url": "https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier.htm",
+      "quota": "Always Free 永久免费：ARM Ampere A1 共 4 OCPU + 24GB 内存（可拆成 1~4 台 VM，每月 3000 OCPU 小时 / 18000 GB 小时）+ 2 台 AMD 微型实例 + 200GB 块存储 + 10GB 对象存储 + 2 个自治数据库 + 负载均衡；另送 $300 试用金（30 天）",
+      "validity": "Always Free 永久有效；$300 试用金 30 天",
+      "reset": "每月配额刷新",
+      "needs": { "card": true, "phone": true, "realname": false, "vpn": true, "student": false },
+      "difficulty": 3,
+      "score": 9.0,
+      "tags": ["永久免费VPS", "4核24G", "价值最高", "需绑卡"],
+      "signup": [
+        "打开 https://signup.cloud.oracle.com ，选择国家/地区（一旦选定不可更改，请慎重）",
+        "填写真实姓名、邮箱，验证邮箱后设置密码",
+        "填写住址与手机号（需与后续银行卡账单地址匹配）",
+        "绑定一张支持外币的信用卡 / 借记卡（会预授权 $1 验证，随后返还）",
+        "选择主区域（Home Region）——选人少的区域更容易开到 ARM 机器，同样不可更改",
+        "等待账号开通邮件（几分钟到几小时）"
+      ],
+      "claim": [
+        "登录 OCI 控制台 → Compute → Instances →「Create Instance」",
+        "Image and shape 处选择 Ampere A1 Flex，把 OCPU 拉到 4、内存拉到 24GB（这就是免费上限）",
+        "系统盘选 Boot Volume 最大 200GB（免费额度内）",
+        "上传 SSH 公钥后创建；若报 Out of host capacity 属正常，换可用域重试或写脚本轮询",
+        "创建完成后到 Networking → VCN → Security List 放行需要的端口，并在系统内关掉 iptables 默认规则",
+        "重要：账号内不要留下任何非 Always Free 的资源，否则试用期结束会开始扣费"
+      ],
+      "verify": { "type": "manual", "note": "SSH 登录实例执行 nproc / free -h 验证 4 核 24G" },
+      "tips": [
+        "这是全网价值最高的免费资源，一台 4C24G ARM 服务器市价每月上百元",
+        "开不出机器时用「换区域 + 定时重试脚本」，多数人几小时内能成功",
+        "创建后保持机器有实际负载，闲置实例可能被回收"
+      ],
+      "risks": [
+        "必须绑卡，且甲骨文风控严格：地址/卡信息不一致会直接判定为欺诈并封号",
+        "一人只能有一个免费账号，多开会被连坐封禁",
+        "试用期结束若忘记删除付费资源会产生真实账单"
+      ]
+    },
+    {
+      "id": "google-cloud-free",
+      "name": "Google Cloud Platform 免费层",
+      "aka": ["GCP", "谷歌云"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://cloud.google.com/free",
+      "claim_url": "https://console.cloud.google.com/freetrial",
+      "docs_url": "https://cloud.google.com/free/docs/free-cloud-features",
+      "quota": "新账号 $300 赠金（90 天）；Always Free 永久层：e2-micro 实例 1 台（us-west1/us-central1/us-east1）+ 30GB 磁盘 + 5GB Cloud Storage + Cloud Run 200 万请求/月 + Cloud Functions 200 万次/月 + BigQuery 每月 1TiB 查询 + Firestore 1GiB",
+      "validity": "赠金 90 天；Always Free 永久",
+      "reset": "每月刷新",
+      "needs": { "card": true, "phone": true, "realname": false, "vpn": true, "student": false },
+      "difficulty": 2,
+      "score": 8.5,
+      "tags": ["永久免费VM", "$300赠金", "Cloud Run慷慨"],
+      "signup": [
+        "用 Google 账号访问 https://console.cloud.google.com/freetrial",
+        "选择国家、同意条款",
+        "绑定信用卡（同样只做 $1 预授权验证）",
+        "创建第一个项目"
+      ],
+      "claim": [
+        "赠金自动到账，在「结算 → 概览」可见剩余额度与到期日",
+        "永久免费 VM：Compute Engine → 创建实例 → 机器类型选 e2-micro，区域必须是 us-west1 / us-central1 / us-east1",
+        "Cloud Run：直接部署容器，每月 200 万请求内不计费，非常适合放 API 服务",
+        "务必到「结算 → 预算和提醒」创建 $1 预算告警"
+      ],
+      "verify": { "type": "manual", "note": "gcloud compute instances list 查看实例；结算页确认 $0 消费" },
+      "tips": [
+        "Cloud Run 的免费额度足以承载一个中小型 Web/API 服务，是最实用的部分",
+        "赠金期内不要开 GPU（试用期禁用）"
+      ],
+      "risks": ["90 天赠金到期后若手动升级为付费账号，超出 Always Free 的资源会立即计费"]
+    },
+    {
+      "id": "aws-free-tier",
+      "name": "AWS 免费套餐（2025 年 7 月后新模式）",
+      "aka": ["亚马逊云", "Amazon Web Services"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://aws.amazon.com/free/",
+      "claim_url": "https://portal.aws.amazon.com/billing/signup",
+      "docs_url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html",
+      "quota": "2025-07-15 后新注册账号：开户即得 $100 credits，完成 5 项入门任务（启动并终止 EC2、配置 RDS、部署 Lambda、在 Bedrock 试一个 prompt、设置预算告警）每项 +$20，合计最高 $200；Always Free 永久层：Lambda 100 万请求/月、DynamoDB 25GB、CloudFront 1TB/月流量",
+      "validity": "Free Plan 有效期 6 个月或额度用尽（到期后 90 天宽限期）；Always Free 永久",
+      "reset": "Always Free 每月刷新",
+      "needs": { "card": true, "phone": true, "realname": false, "vpn": true, "student": false },
+      "difficulty": 3,
+      "score": 7.0,
+      "tags": ["$200credits", "Lambda永久免费", "规则已变"],
+      "signup": [
+        "访问 https://portal.aws.amazon.com/billing/signup 注册",
+        "选择账号类型时注意区分「Free Plan」和「Paid Plan」——Free Plan 到期即停，不会偷偷扣费，新手更安全",
+        "绑卡 + 手机验证 + 选择 Basic 免费支持计划"
+      ],
+      "claim": [
+        "登录控制台 → 顶部搜索 Free Tier，进入 Billing → Free Tier 页查看 $100 credits",
+        "在同一页面按清单完成 5 个入门任务，每完成一项 +$20（任务状态会自动更新）",
+        "第一件事就是设 Budgets 预算告警（这本身也是能拿 $20 的任务之一）",
+        "长期免费的部分是 Lambda + DynamoDB + CloudFront，把服务往这三样上搭"
+      ],
+      "verify": { "type": "manual", "note": "Billing 控制台确认 credits 余额与当月消费" },
+      "tips": ["旧教程里的「750 小时 EC2 t2.micro 免费 12 个月」只适用于 2025-07-15 之前创建的账号，别照抄"],
+      "risks": [
+        "AWS 最容易产生意外账单：停止的 EC2 实例仍会为 EBS 磁盘计费，NAT 网关和数据传出流量也收费",
+        "Paid Plan 账号没有支出上限，务必设预算 + 关掉不用的资源"
+      ]
+    },
+    {
+      "id": "azure-free",
+      "name": "Microsoft Azure 免费账户",
+      "aka": ["微软云", "Azure"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://azure.microsoft.com/free/",
+      "claim_url": "https://azure.microsoft.com/free/",
+      "docs_url": "https://learn.microsoft.com/azure/cost-management-billing/",
+      "quota": "新账号 $200 赠金（30 天）；12 个月免费服务（B1S VM 750 小时/月、Blob 5GB、SQL Database 等）；Always Free：Cosmos DB 1000 RU/s + 25GB 终身免费、Functions 100 万次/月、App Service 10 个应用",
+      "validity": "赠金 30 天；部分服务 12 个月；Cosmos DB 等终身免费",
+      "reset": "每月刷新",
+      "needs": { "card": true, "phone": true, "realname": false, "vpn": true, "student": false },
+      "difficulty": 2,
+      "score": 7.0,
+      "tags": ["Cosmos DB终身免费", "$200赠金", "学生免绑卡"],
+      "signup": [
+        "访问 https://azure.microsoft.com/free/ ，用 Microsoft 账号登录",
+        "手机验证 + 绑卡（$1 预授权）",
+        "学生请改走 Azure for Students：$100 赠金且完全无需信用卡"
+      ],
+      "claim": [
+        "赠金自动到账，「成本管理 + 计费」页可见余额与 30 天倒计时",
+        "Cosmos DB 终身免费层：创建账户时勾选「应用免费层折扣」（每订阅仅限 1 个）",
+        "在「成本管理 → 预算」创建预算告警"
+      ],
+      "verify": { "type": "manual", "note": "az account show / 成本管理页确认" },
+      "tips": ["Cosmos DB 的终身免费层（1000 RU/s + 25GB）是四大云里最好的永久免费数据库"],
+      "risks": ["赠金 30 天窗口很短；到期转按量付费后 Azure 没有全局支出上限"]
+    },
+    {
+      "id": "cloudflare-free",
+      "name": "Cloudflare 免费套餐（Workers / Pages / R2 / D1）",
+      "aka": ["CF", "赛博菩萨"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://dash.cloudflare.com/sign-up",
+      "claim_url": "https://dash.cloudflare.com",
+      "docs_url": "https://developers.cloudflare.com/workers/platform/limits/",
+      "quota": "Workers 每天 10 万次请求；Pages 无限静态请求 + 每月 500 次构建；R2 对象存储 10GB + 每月 100 万次 A 类操作，出网流量全免费；D1 数据库 5GB + 每天 500 万行读取；KV 每天 10 万次读；免费 CDN + DDoS 防护 + 无限带宽",
+      "validity": "永久免费，无需信用卡",
+      "reset": "每日/每月刷新",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": false, "student": false },
+      "difficulty": 1,
+      "score": 9.0,
+      "tags": ["永久免费", "免绑卡", "零出网费", "国内可用"],
+      "signup": [
+        "打开 https://dash.cloudflare.com/sign-up ，邮箱注册（免费计划全程不需要信用卡）",
+        "验证邮箱后即可使用 Workers / Pages / R2 / D1"
+      ],
+      "claim": [
+        "Workers & Pages：Dashboard 左侧「Compute (Workers)」→ Create，可直接连 GitHub 仓库自动部署",
+        "R2：左侧「R2」→ Create bucket（R2 需要绑卡验证身份，但免费额度内不扣费）",
+        "D1：左侧「Storage & Databases → D1」→ Create database",
+        "本地开发装 wrangler：npm i -g wrangler && wrangler login"
+      ],
+      "verify": { "type": "manual", "note": "wrangler whoami 确认登录；部署一个 hello world Worker 验证" },
+      "tips": [
+        "R2 的「出网流量 0 费用」是它相对 S3 最大的优势，做文件分发首选",
+        "Workers + D1 + R2 + Workers AI 四件套可以零成本跑一个完整 AI 应用"
+      ],
+      "risks": ["免费 Worker 单次 CPU 时间限制 10ms（付费版 30s），重计算任务跑不动"]
+    },
+    {
+      "id": "vercel-netlify",
+      "name": "Vercel Hobby / Netlify Free",
+      "aka": ["Vercel", "Netlify", "前端部署"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://vercel.com/pricing",
+      "claim_url": "https://vercel.com/signup",
+      "docs_url": "https://vercel.com/docs/limits",
+      "quota": "Vercel Hobby：每月 100GB 带宽 + Serverless 函数调用额度 + 无限静态部署；Netlify Free：每月 100GB 带宽 + 300 分钟构建 + 125K 函数调用",
+      "validity": "永久免费（仅限非商业个人项目）",
+      "reset": "每月重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 8.0,
+      "tags": ["前端部署", "免绑卡", "Git自动部署"],
+      "signup": [
+        "用 GitHub / GitLab 账号登录 https://vercel.com/signup 或 https://app.netlify.com/signup",
+        "授权访问仓库"
+      ],
+      "claim": [
+        "「Add New → Project」→ 选择仓库 → 框架自动识别 → Deploy",
+        "免费额度自动生效，无需领取；在 Settings → Usage 查看用量",
+        "绑定自定义域名（免费）并自动签发 SSL"
+      ],
+      "verify": { "type": "manual", "note": "部署成功后访问 *.vercel.app / *.netlify.app 域名" },
+      "tips": ["Vercel Hobby 明确禁止商业用途，接商单请升级 Pro，被查到会停站"],
+      "risks": ["Serverless 函数在 Hobby 计划有 10 秒执行超时，长任务会被截断"]
+    },
+    {
+      "id": "supabase-neon",
+      "name": "Supabase / Neon（免费 Postgres）",
+      "aka": ["Supabase", "Neon", "Serverless 数据库"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://supabase.com/pricing",
+      "claim_url": "https://supabase.com/dashboard/sign-up",
+      "docs_url": "https://supabase.com/docs",
+      "quota": "Supabase Free：2 个项目 + 500MB 数据库 + 1GB 文件存储 + 5 万月活用户认证 + 实时订阅；Neon Free：0.5GB 存储 + 自动休眠 + 数据库分支功能",
+      "validity": "永久免费；Supabase 项目闲置 7 天会被暂停（可手动恢复）",
+      "reset": "每月",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 7.5,
+      "tags": ["Postgres", "免绑卡", "自带Auth", "向量检索"],
+      "signup": ["用 GitHub 账号登录 https://supabase.com/dashboard 或 https://console.neon.tech"],
+      "claim": [
+        "「New Project」→ 选区域（选 Singapore 对国内延迟较低）→ 设数据库密码",
+        "项目创建后在 Settings → API 获取 URL 与 anon key",
+        "Supabase 自带 pgvector 扩展，可直接当向量数据库用于 RAG"
+      ],
+      "verify": { "type": "manual", "note": "用 psql 或项目面板的 SQL Editor 执行 select 1" },
+      "tips": ["Supabase = Postgres + Auth + Storage + 向量检索，个人项目后端一站配齐"],
+      "risks": ["免费项目闲置会暂停，做 demo 前记得先唤醒"]
+    },
+    {
+      "id": "render-railway-flyio",
+      "name": "Render / Railway / Fly.io（后端托管）",
+      "aka": ["Render", "Railway", "Fly.io"],
+      "category": "cloud",
+      "region": "global",
+      "url": "https://render.com/pricing",
+      "claim_url": "https://dashboard.render.com/register",
+      "docs_url": "https://render.com/docs/free",
+      "quota": "Render Free：Web Service 750 小时/月（闲置 15 分钟休眠）+ 静态站点无限；Railway：新用户 $5 试用额度（需验证）；Fly.io：小额免费配额 + 需绑卡",
+      "validity": "Render 免费层长期；Railway 赠金一次性",
+      "reset": "每月",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 6.5,
+      "tags": ["后端托管", "Docker支持", "GitHub自动部署"],
+      "signup": ["用 GitHub 账号登录对应平台注册"],
+      "claim": [
+        "Render：New → Web Service → 连接仓库 → Instance Type 选 Free",
+        "Railway：New Project → Deploy from GitHub，$5 额度按用量扣减",
+        "都支持 Dockerfile 部署，适合放 Python/Node 后端"
+      ],
+      "verify": { "type": "manual", "note": "部署后访问分配的 *.onrender.com 域名" },
+      "tips": ["Render 免费实例休眠后首次请求要等 30~50 秒冷启动，可用外部定时 ping 保活（注意别违反 ToS）"],
+      "risks": ["免费层资源很小（512MB 内存），跑不动重型服务"]
+    }
+  ]
+}

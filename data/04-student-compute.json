@@ -1,0 +1,222 @@
+{
+  "pack": "学生认证 / 免费算力 / 开发者福利",
+  "pack_id": "student-compute",
+  "note": "学生身份是含金量最高的「一次认证、全年吃薪」通道；免费 GPU 平台则适合训练与微调。",
+  "channels": [
+    {
+      "id": "github-student-pack",
+      "name": "GitHub Student Developer Pack",
+      "aka": ["学生包", "GitHub Education"],
+      "category": "student",
+      "region": "global",
+      "url": "https://education.github.com/pack",
+      "claim_url": "https://education.github.com/discount_requests/application",
+      "docs_url": "https://docs.github.com/education",
+      "quota": "100+ 合作方权益：GitHub Pro（3000 Actions 分钟 + 180 Codespaces 小时/月）、JetBrains 全家桶、DigitalOcean $200 credits、Azure $100 credits + 免费服务、MongoDB Atlas $50、Namecheap 免费 .me 域名 1 年、Canva Pro、Notion、DataCamp 3 个月、Frontend Masters 6 个月、Datadog Pro 2 年、Sentry、1Password 等",
+      "validity": "在校期间持续有效，需每年重新验证；各合作方权益有各自的时限",
+      "reset": "按合作方策略",
+      "needs": { "card": false, "phone": false, "realname": true, "vpn": true, "student": true },
+      "difficulty": 2,
+      "score": 10.0,
+      "tags": ["含金量最高", "100+权益", "学生专属", "价值数千元"],
+      "signup": [
+        "准备材料（二选一）：学校签发的邮箱（.edu / .edu.cn / .ac.cn 等），或带日期的在读证明（学生证正面照、学费收据、录取通知书、成绩单）",
+        "GitHub 账号 Settings → Emails 添加学校邮箱并完成验证（有校园邮箱的走这条最快）",
+        "把 GitHub 个人资料的姓名填成与学生证一致的真名，地址填学校所在城市"
+      ],
+      "claim": [
+        "访问 https://education.github.com/discount_requests/application ，点击「Get student benefits」",
+        "身份选 Student，选择你的学校（列表里没有就手动输入全称）",
+        "上传证明材料：证件照要清晰、未裁剪、未加滤镜，姓名/学校/当前学年三要素齐全",
+        "提交后一般数小时至 72 小时出结果（高峰期可能 1~2 周）",
+        "通过后到 https://education.github.com/pack 逐项「Get access」领取"
+      ],
+      "verify": { "type": "manual", "note": "GitHub 个人主页会出现学生标识；Settings → Billing 显示 Pro" },
+      "tips": [
+        "领取顺序有讲究：先领长期型（GitHub Pro、JetBrains——两者在校期间一直有效），限时型（DigitalOcean $200 一年、DataCamp 3 个月、GitKraken 6 个月）等真正要用时再点，别浪费倒计时",
+        "JetBrains 要到 JetBrains 官网申请、验证方式选 GitHub，不是在 GitHub 页面领",
+        "毕业后 JetBrains 仍有 2 年 40% 折扣"
+      ],
+      "risks": [
+        "PS 造假证件会被永久封禁 GitHub 账号，绝对不要试",
+        "被拒后可换材料重新申请（换成带日期的缴费单成功率更高）",
+        "学生权益仅限非商业教育用途，别拿去跑商业生产"
+      ]
+    },
+    {
+      "id": "jetbrains-student",
+      "name": "JetBrains 学生免费授权",
+      "aka": ["IDEA", "PyCharm", "全家桶"],
+      "category": "student",
+      "region": "global",
+      "url": "https://www.jetbrains.com/community/education/#students",
+      "claim_url": "https://www.jetbrains.com/shop/eform/students",
+      "docs_url": "https://sales.jetbrains.com/hc/en-gb/articles/207154369",
+      "quota": "All Products Pack 全家桶（IntelliJ IDEA Ultimate / PyCharm Pro / WebStorm / CLion / Rider / DataGrip 等，市价约 $289/年）+ AI Assistant 部分额度",
+      "validity": "1 年，在校期间可无限次续期",
+      "reset": "每年续期",
+      "needs": { "card": false, "phone": false, "realname": true, "vpn": false, "student": true },
+      "difficulty": 1,
+      "score": 9.0,
+      "tags": ["全家桶", "每年续期", "GitHub可验证"],
+      "signup": [
+        "打开 https://www.jetbrains.com/shop/eform/students",
+        "验证方式三选一：① 学校邮箱 ② GitHub Student Pack 账号 ③ ISIC 国际学生证"
+      ],
+      "claim": [
+        "推荐用 GitHub 验证：已通过学生包认证的话，点「GitHub」按钮授权即可秒过",
+        "或填写学校邮箱，到邮箱点确认链接",
+        "登录 JetBrains Account 后在 Licenses 页看到 All Products Pack",
+        "IDE 里 Help → Register → 用 JetBrains Account 登录激活"
+      ],
+      "verify": { "type": "manual", "note": "IDE 的 Help → About 显示 licensed to <你的邮箱>" },
+      "tips": ["每年到期前一个月官方会发邮件提醒续期，用同样方式再验证一次即可"],
+      "risks": ["学生授权禁止商用，公司项目请用公司许可证"]
+    },
+    {
+      "id": "azure-for-students",
+      "name": "Azure for Students",
+      "aka": ["微软学生云"],
+      "category": "student",
+      "region": "global",
+      "url": "https://azure.microsoft.com/free/students/",
+      "claim_url": "https://azure.microsoft.com/free/students/",
+      "docs_url": "https://learn.microsoft.com/azure/education-hub/",
+      "quota": "$100 Azure 赠金 + 25+ 项免费服务，全程无需信用卡；含 Azure OpenAI 申请资格（视区域）",
+      "validity": "12 个月，符合条件可续期",
+      "reset": "一年一次",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": true, "student": true },
+      "difficulty": 2,
+      "score": 8.0,
+      "tags": ["免绑卡", "$100赠金", "18岁+"],
+      "signup": [
+        "访问 https://azure.microsoft.com/free/students/ ，用 Microsoft 账号登录",
+        "用学校邮箱验证学生身份（或上传在读证明）",
+        "手机号验证，全程不需要信用卡"
+      ],
+      "claim": [
+        "验证通过后 $100 赠金立即到账，在 Azure 门户「成本管理 + 计费」可见",
+        "在 Education Hub 里还能看到免费的学习路径与实验",
+        "赠金用完后服务自动停止，不会产生欠费（这是学生版最大的优点）"
+      ],
+      "verify": { "type": "manual", "note": "Azure 门户订阅类型显示 Azure for Students" },
+      "tips": ["和 GitHub 学生包里的 Azure 权益是同一个，别重复申请"],
+      "risks": ["需年满 18 岁；13-17 岁走的是另一个受限版本"]
+    },
+    {
+      "id": "kaggle-gpu",
+      "name": "Kaggle 免费 GPU/TPU",
+      "aka": ["Kaggle Notebook"],
+      "category": "compute",
+      "region": "global",
+      "url": "https://www.kaggle.com",
+      "claim_url": "https://www.kaggle.com/settings",
+      "docs_url": "https://www.kaggle.com/docs/notebooks",
+      "quota": "每周 30 小时免费 GPU（T4 x2 共 32GB 显存 或 P100 16GB）+ TPU 配额；单次会话最长 12 小时；CPU 使用不限",
+      "validity": "长期，每周额度重置",
+      "reset": "每周一（UTC）重置",
+      "needs": { "card": false, "phone": true, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 8.5,
+      "tags": ["每周30小时", "双T4", "免费GPU", "额度可见"],
+      "signup": [
+        "用 Google 账号注册 https://www.kaggle.com",
+        "Settings → Phone Verification 完成手机号验证（不验证无法使用 GPU 和联网）"
+      ],
+      "claim": [
+        "「Create → Notebook」新建",
+        "右侧 Settings → Accelerator 选择 GPU T4 x2 或 P100；Internet 开关打开",
+        "右上角可实时看到本周剩余 GPU 小时数",
+        "跑完记得 Stop Session，否则会持续消耗配额"
+      ],
+      "verify": { "type": "manual", "note": "notebook 内执行 !nvidia-smi 应看到 T4/P100" },
+      "tips": [
+        "比 Colab 更可靠：配额有明确计数器、不会随机断线",
+        "数据集可直接挂载，从 HuggingFace 下模型速度极快（Google 机房）"
+      ],
+      "risks": ["会话 12 小时强制结束，长训练要做 checkpoint 续训", "禁止挖矿和长期挂机代理，会封号"]
+    },
+    {
+      "id": "google-colab",
+      "name": "Google Colab 免费层",
+      "aka": ["Colab", "协作实验室"],
+      "category": "compute",
+      "region": "global",
+      "url": "https://colab.research.google.com",
+      "claim_url": "https://colab.research.google.com",
+      "docs_url": "https://research.google.com/colaboratory/faq.html",
+      "quota": "动态分配的免费 GPU（常见 T4 16GB），无固定小时数，按平台负载与个人使用历史分配",
+      "validity": "长期",
+      "reset": "动态",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 7.0,
+      "tags": ["零配置", "免费GPU", "配额不透明"],
+      "signup": ["用 Google 账号直接访问 https://colab.research.google.com"],
+      "claim": [
+        "新建笔记本 → 代码执行程序 → 更改运行时类型 → 硬件加速器选 T4 GPU",
+        "免费额度自动生效，无需领取",
+        "执行 !nvidia-smi 确认拿到卡"
+      ],
+      "verify": { "type": "manual", "note": "!nvidia-smi 输出显卡型号" },
+      "tips": ["适合做快速实验和教学演示；要稳定长训练还是 Kaggle 更靠谱"],
+      "risks": ["高强度使用后会被降级甚至短时间内拿不到 GPU；会话随时可能断开"]
+    },
+    {
+      "id": "cn-cloud-newbie",
+      "name": "国内云厂商新人 / 学生特惠",
+      "aka": ["腾讯云学生机", "阿里云飞天计划", "华为云"],
+      "category": "cloud",
+      "region": "cn",
+      "url": "https://cloud.tencent.com/act/pro/student",
+      "claim_url": "https://free.aliyun.com",
+      "docs_url": "https://cloud.tencent.com/act/free",
+      "quota": "阿里云「飞天免费试用计划」：ECS/OSS/RDS 等数十款产品 1~3 个月免费试用额度；腾讯云新用户免费试用中心 + 学生优惠（认证后云服务器低至个位数/月）；华为云、京东云类似",
+      "validity": "多为 1~3 个月试用；学生优惠为折扣而非免费",
+      "reset": "每账号一次",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 1,
+      "score": 6.5,
+      "tags": ["国内直连", "备案可用", "试用为主"],
+      "signup": [
+        "阿里云：https://free.aliyun.com 登录后完成实名认证",
+        "腾讯云：https://cloud.tencent.com/act/free 微信扫码登录 + 实名",
+        "学生额外在「学生认证/校园计划」页提交学信网或学生证认证"
+      ],
+      "claim": [
+        "在免费试用页面按产品逐个点击「立即试用」，注意勾选时长（1 个月/3 个月）",
+        "ECS/CVM 试用实例到期会释放，重要数据要提前备份或做镜像",
+        "顺手领各家的 AI 相关试用（语音、OCR、翻译 API 通常都有免费调用次数）"
+      ],
+      "verify": { "type": "manual", "note": "控制台「费用中心 → 资源包/试用管理」查看剩余时长" },
+      "tips": ["国内云的最大价值是可以备案 + 国内访问速度快，做面向国内用户的服务绕不开"],
+      "risks": ["试用到期不续费会直接释放实例并删除数据，务必设日历提醒"]
+    },
+    {
+      "id": "misc-dev-perks",
+      "name": "其它开发者福利（域名 / 监控 / 邮件）",
+      "aka": ["长尾福利"],
+      "category": "student",
+      "region": "global",
+      "url": "https://github.com/ripienaar/free-for-dev",
+      "claim_url": "https://free-for.dev",
+      "docs_url": "https://github.com/ripienaar/free-for-dev",
+      "quota": "free-for-dev 收录了上千个面向开发者的免费额度：Resend/Mailgun 邮件、Sentry 错误监控、Better Stack 可观测性、Algolia 搜索、Upstash Redis、Twilio 试用、Auth0 免费认证等",
+      "validity": "各家不同，多为永久免费层",
+      "reset": "各家不同",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 7.5,
+      "tags": ["清单站", "长尾", "持续更新"],
+      "signup": ["直接访问 https://free-for.dev （对应仓库 github.com/ripienaar/free-for-dev，20 万+ star）"],
+      "claim": [
+        "按分类浏览（Analytics / CDN / Email / Monitoring / Database …）",
+        "挑出你项目真正需要的 3~5 个，逐个注册（多数只需邮箱）",
+        "把常用的记录到自己的清单里，避免重复找"
+      ],
+      "verify": { "type": "manual", "note": "无统一验证方式" },
+      "tips": ["这是全网最全的免费开发者资源清单，建议 Star 后定期回看", "Upstash Redis 与 Resend 邮件的免费层对小项目基本够用"],
+      "risks": ["清单里部分条目已过期，以各服务官网当前政策为准"]
+    }
+  ]
+}

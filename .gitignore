@@ -1,0 +1,13 @@
+# 本地密钥库 —— 绝对不要提交
+out/keys.local.env
+*.env
+!.env.example
+
+# 个人本地状态（不入库，避免每次运行产生噪音）
+out/progress.json
+out/plan.json
+
+# Python
+__pycache__/
+*.pyc
+.DS_Store

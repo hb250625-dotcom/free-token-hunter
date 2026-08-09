@@ -1,0 +1,453 @@
+{
+  "pack": "海外大模型 API 免费层",
+  "pack_id": "llm-global",
+  "note": "多数需要国际网络环境与境外手机号/邮箱；绝大部分无需信用卡。请遵守各平台服务条款与当地法律法规。",
+  "channels": [
+    {
+      "id": "google-ai-studio",
+      "name": "Google AI Studio (Gemini API)",
+      "aka": ["Gemini", "AI Studio", "makersuite"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://aistudio.google.com",
+      "claim_url": "https://aistudio.google.com/apikey",
+      "docs_url": "https://ai.google.dev/gemini-api/docs",
+      "quota": "永久免费层：Gemini Flash 系列约 10 RPM / 250 RPD（不同模型不同），100 万 token 上下文，支持图文音视频多模态；Gemma 系列另有配额",
+      "validity": "永久有效（免费层长期存在，具体速率上限官方会调整）",
+      "reset": "每分钟 / 每天滚动重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 9.5,
+      "tags": ["永久免费", "多模态", "超长上下文", "无需绑卡"],
+      "signup": [
+        "确保网络可访问 Google 服务，用 Google 账号登录 https://aistudio.google.com",
+        "同意条款；免费层通常无需绑定信用卡（Paid tier 才需要结算账号）",
+        "注意：部分国家/地区不在免费层支持范围内，页面会直接提示"
+      ],
+      "claim": [
+        "进入 https://aistudio.google.com/apikey → 「Create API key」",
+        "选择一个 Google Cloud 项目（没有就让它自动新建），生成 AIza 开头的 Key",
+        "调用地址（OpenAI 兼容层）：https://generativelanguage.googleapis.com/v1beta/openai/",
+        "把 Key 存入环境变量 GEMINI_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "model": "gemini-2.5-flash",
+        "env": "GEMINI_API_KEY"
+      },
+      "tips": [
+        "免费层最强的一档：多模态 + 百万上下文，做长文档/视频理解性价比无敌",
+        "免费层数据可能被用于改进模型，不要传敏感数据；付费层不会"
+      ],
+      "risks": ["超过 RPD 会直接 429，需要做退避重试；免费层不适合面向公众的高并发服务"]
+    },
+    {
+      "id": "groq",
+      "name": "Groq Cloud",
+      "aka": ["GroqCloud", "LPU"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://console.groq.com",
+      "claim_url": "https://console.groq.com/keys",
+      "docs_url": "https://console.groq.com/docs",
+      "quota": "免费开发者层：约 30 RPM / 14,400 RPD，TPM 因模型而异（6K~20K）；覆盖 Llama、Qwen、GPT-OSS、Kimi、Whisper 语音转文字",
+      "validity": "永久免费层，无过期",
+      "reset": "每分钟 / 每天重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 9.0,
+      "tags": ["最快推理", "无需绑卡", "语音转写", "永久免费"],
+      "signup": [
+        "打开 https://console.groq.com ，用 Google / GitHub 账号一键登录（邮箱也可）",
+        "无需信用卡、无需手机验证"
+      ],
+      "claim": [
+        "左侧「API Keys」→「Create API Key」，复制 gsk_ 开头的 Key（只显示一次）",
+        "调用地址 https://api.groq.com/openai/v1 ，完全兼容 OpenAI SDK",
+        "在「Limits」页可实时查看每个模型的 RPM/RPD/TPM 余量",
+        "把 Key 存入环境变量 GROQ_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.groq.com/openai/v1",
+        "model": "llama-3.3-70b-versatile",
+        "env": "GROQ_API_KEY"
+      },
+      "tips": [
+        "首 token 延迟 ~200ms、吞吐 500+ tok/s，做实时语音/对话体验碾压其它免费层",
+        "Whisper 转写也在免费额度内，处理音频很划算"
+      ],
+      "risks": ["模型列表更新快，硬编码模型名容易失效，建议先调 /models 接口"]
+    },
+    {
+      "id": "cerebras",
+      "name": "Cerebras Inference",
+      "aka": ["Cerebras Cloud"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://cloud.cerebras.ai",
+      "claim_url": "https://cloud.cerebras.ai/platform/apikeys",
+      "docs_url": "https://inference-docs.cerebras.ai",
+      "quota": "免费层约每天 100 万 tokens，30 RPM；模型含 GPT-OSS 120B、Llama、Qwen、GLM 等",
+      "validity": "永久免费层",
+      "reset": "每日重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 8.5,
+      "tags": ["每日百万tokens", "超高吞吐", "无需绑卡"],
+      "signup": [
+        "打开 https://cloud.cerebras.ai ，用 Google/GitHub 邮箱注册登录",
+        "填写简单的用途问卷即可进入控制台"
+      ],
+      "claim": [
+        "「API Keys」→「Generate API Key」，复制 csk- 开头的 Key",
+        "调用地址 https://api.cerebras.ai/v1 ，OpenAI 兼容",
+        "把 Key 存入环境变量 CEREBRAS_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.cerebras.ai/v1",
+        "model": "llama-3.3-70b",
+        "env": "CEREBRAS_API_KEY"
+      },
+      "tips": ["每天 100 万 tokens 的日刷新额度，长期算下来比任何一次性赠送都多"],
+      "risks": ["上下文长度在免费层有裁剪，长文任务需确认 max context"]
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "aka": ["OR", "模型路由"],
+      "category": "aggregator",
+      "region": "global",
+      "url": "https://openrouter.ai",
+      "claim_url": "https://openrouter.ai/keys",
+      "docs_url": "https://openrouter.ai/docs",
+      "quota": "带 :free 后缀的模型免费调用，约 50 次/天；账户历史充值满 $10 后提升到约 1000 次/天。免费模型池常含 20~35 个模型",
+      "validity": "永久（免费模型池动态变化）",
+      "reset": "每日重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 8.5,
+      "tags": ["一个Key多模型", "免费模型池", "统一计费"],
+      "signup": [
+        "打开 https://openrouter.ai ，用 Google/GitHub/邮箱注册",
+        "无需绑卡即可使用 :free 模型"
+      ],
+      "claim": [
+        "「Keys」→「Create Key」，复制 sk-or-v1-... 开头的 Key",
+        "在 https://openrouter.ai/models?max_price=0 筛选当前所有免费模型",
+        "调用地址 https://openrouter.ai/api/v1 ，model 填 `厂商/模型名:free`",
+        "把 Key 存入环境变量 OPENROUTER_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://openrouter.ai/api/v1",
+        "model": "meta-llama/llama-3.3-70b-instruct:free",
+        "env": "OPENROUTER_API_KEY"
+      },
+      "tips": [
+        "最适合做「模型试驾」：一个 Key 就能横评几十个模型，选型阶段必备",
+        "免费模型的输入可能被上游用于训练，敏感数据勿用"
+      ],
+      "risks": ["免费模型经常上下架/限流，生产环境务必配置 fallback 模型列表"]
+    },
+    {
+      "id": "nvidia-nim",
+      "name": "NVIDIA NIM (build.nvidia.com)",
+      "aka": ["NIM", "NVIDIA API Catalog"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://build.nvidia.com",
+      "claim_url": "https://build.nvidia.com/explore/discover",
+      "docs_url": "https://docs.api.nvidia.com",
+      "quota": "免费开发者层约 40 RPM，无明确每日上限；上百个模型（DeepSeek、Llama、Qwen、Nemotron、Mistral、视觉/向量/重排模型）",
+      "validity": "注册赠送额度 + 可续期的免费开发者层",
+      "reset": "按速率限制滚动",
+      "needs": { "card": false, "phone": true, "realname": false, "vpn": true, "student": false },
+      "difficulty": 2,
+      "score": 8.0,
+      "tags": ["模型最多", "无日上限", "含向量/重排"],
+      "signup": [
+        "打开 https://build.nvidia.com ，注册 NVIDIA 开发者账号（邮箱）",
+        "按提示完成手机号验证（这一步是必需的）",
+        "登录后可在网页直接试玩任意模型"
+      ],
+      "claim": [
+        "在任一模型页面点击右上角「Get API Key」→「Generate Key」，复制 nvapi- 开头的 Key",
+        "调用地址 https://integrate.api.nvidia.com/v1 ，OpenAI 兼容",
+        "把 Key 存入环境变量 NVIDIA_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "model": "meta/llama-3.3-70b-instruct",
+        "env": "NVIDIA_API_KEY"
+      },
+      "tips": ["除了 LLM，还有 embedding / reranker / OCR / 语音模型，做 RAG 全链路都能免费跑通"],
+      "risks": ["需要手机号验证，部分号段可能不支持"]
+    },
+    {
+      "id": "cloudflare-workers-ai",
+      "name": "Cloudflare Workers AI",
+      "aka": ["CF AI", "Neurons"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://dash.cloudflare.com",
+      "claim_url": "https://dash.cloudflare.com/?to=/:account/ai/workers-ai",
+      "docs_url": "https://developers.cloudflare.com/workers-ai/",
+      "quota": "每天 10,000 Neurons 免费（约等于数十万 tokens，取决于模型）；含 Llama、Qwen、Mistral、GLM 及文生图模型",
+      "validity": "永久免费层，每天重置",
+      "reset": "每日 UTC 00:00 重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 8.0,
+      "tags": ["每日刷新", "边缘推理", "含文生图", "国内可直连"],
+      "signup": [
+        "注册 Cloudflare 账号 https://dash.cloudflare.com/sign-up （邮箱即可，免费计划无需绑卡）",
+        "验证邮箱后进入 Dashboard"
+      ],
+      "claim": [
+        "左侧「AI → Workers AI」，页面会显示你的 Account ID 与今日 Neurons 用量",
+        "「Manage API tokens」→ 创建带 Workers AI 权限的 API Token",
+        "REST 调用地址：https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/run/<MODEL>",
+        "也可用 OpenAI 兼容端点：https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1",
+        "model": "@cf/meta/llama-3.1-8b-instruct",
+        "env": "CLOUDFLARE_API_TOKEN"
+      },
+      "tips": [
+        "跟 Workers/Pages 免费额度组合，可以零成本部署一个完整的 AI 应用",
+        "文生图模型也算 Neurons，做图片生成很划算"
+      ],
+      "risks": ["Neurons 计量对不同模型差异极大，跑大模型时 1 万 Neurons 消耗很快"]
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral AI La Plateforme",
+      "aka": ["Mistral", "Codestral"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://console.mistral.ai",
+      "claim_url": "https://console.mistral.ai/api-keys",
+      "docs_url": "https://docs.mistral.ai",
+      "quota": "免费 Experiment 层，覆盖 Mistral Large / Medium / Small / Codestral / Devstral，月度额度可达十亿 token 量级（有严格速率限制）",
+      "validity": "永久免费层（需接受数据用于改进模型的条款）",
+      "reset": "按月/按速率",
+      "needs": { "card": false, "phone": true, "realname": false, "vpn": true, "student": false },
+      "difficulty": 2,
+      "score": 7.5,
+      "tags": ["欧洲合规", "代码模型", "免费层慷慨"],
+      "signup": [
+        "打开 https://console.mistral.ai 注册（邮箱 + 手机号验证）",
+        "在「Workspace → Billing」选择 Experiment (free) 计划并同意条款"
+      ],
+      "claim": [
+        "「API Keys」→「Create new key」，复制 Key",
+        "调用地址 https://api.mistral.ai/v1 ，OpenAI 兼容",
+        "把 Key 存入环境变量 MISTRAL_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.mistral.ai/v1",
+        "model": "mistral-small-latest",
+        "env": "MISTRAL_API_KEY"
+      },
+      "tips": ["Codestral 专门为补全/中间填充优化，做代码插件比通用模型好用"],
+      "risks": ["免费层明确会用你的数据训练模型，商业项目慎用"]
+    },
+    {
+      "id": "github-models",
+      "name": "GitHub Models",
+      "aka": ["Azure AI in GitHub"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://github.com/marketplace/models",
+      "claim_url": "https://github.com/settings/tokens",
+      "docs_url": "https://docs.github.com/en/github-models",
+      "quota": "凭 GitHub 账号免费调用 GPT 系列、Llama、Phi、Mistral、DeepSeek 等十几个模型，按 Copilot 账号等级分配每日请求数与 tokens 上限",
+      "validity": "长期（随 GitHub 账号有效）",
+      "reset": "每日重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 8.0,
+      "tags": ["含GPT系列", "零成本", "只需GitHub账号"],
+      "signup": [
+        "有 GitHub 账号即可，访问 https://github.com/marketplace/models",
+        "首次使用需同意 Models 的使用条款"
+      ],
+      "claim": [
+        "生成一个 Personal Access Token：Settings → Developer settings → Personal access tokens（fine-grained 亦可，勾选 models:read 权限）",
+        "调用地址 https://models.github.ai/inference ，OpenAI 兼容，Authorization: Bearer <你的 PAT>",
+        "model 名形如 openai/gpt-4.1-mini、meta/Llama-3.3-70B-Instruct",
+        "把 Token 存入环境变量 GITHUB_MODELS_TOKEN"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://models.github.ai/inference",
+        "model": "openai/gpt-4.1-mini",
+        "env": "GITHUB_MODELS_TOKEN"
+      },
+      "tips": ["是少数能免费碰到 GPT 系列官方模型的渠道，适合做能力基准对比"],
+      "risks": ["额度较小，只适合开发测试，明确禁止生产滥用"]
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "aka": ["Command", "Rerank"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://dashboard.cohere.com",
+      "claim_url": "https://dashboard.cohere.com/api-keys",
+      "docs_url": "https://docs.cohere.com",
+      "quota": "Trial Key：约 1,000 次调用/月，覆盖 Command A/R、Aya、Embed、Rerank",
+      "validity": "长期（仅限开发与评估，不可用于生产）",
+      "reset": "每月重置",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 7.0,
+      "tags": ["Rerank强", "向量模型", "RAG友好"],
+      "signup": ["打开 https://dashboard.cohere.com 注册（邮箱/Google）"],
+      "claim": [
+        "「API Keys」页默认已有一个 Trial Key，直接复制即可",
+        "调用地址 https://api.cohere.com/v2 ，或用 compatibility 层 https://api.cohere.ai/compatibility/v1",
+        "把 Key 存入环境变量 COHERE_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.cohere.ai/compatibility/v1",
+        "model": "command-r-08-2024",
+        "env": "COHERE_API_KEY"
+      },
+      "tips": ["Rerank 模型是做 RAG 精排的业界常用选择，免费额度足够个人项目"],
+      "risks": ["Trial Key 明令禁止商用，上线前需换 Production Key（付费）"]
+    },
+    {
+      "id": "zai-glm",
+      "name": "Z.ai（智谱国际站）",
+      "aka": ["Z.AI", "Zhipu International"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://z.ai",
+      "claim_url": "https://z.ai/manage-apikey/apikey-list",
+      "docs_url": "https://docs.z.ai",
+      "quota": "GLM-4.x-Flash 系列在国际站免费调用；新用户另有体验额度",
+      "validity": "Flash 模型长期免费",
+      "reset": "按速率限制",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 7.5,
+      "tags": ["免中国手机号", "GLM", "免费模型"],
+      "signup": [
+        "打开 https://z.ai ，用邮箱或 Google 账号注册（不需要中国手机号，适合海外用户）"
+      ],
+      "claim": [
+        "「API Keys」页创建 Key",
+        "调用地址 https://api.z.ai/api/paas/v4 ，OpenAI 兼容",
+        "把 Key 存入环境变量 ZAI_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.z.ai/api/paas/v4",
+        "model": "glm-4.5-flash",
+        "env": "ZAI_API_KEY"
+      },
+      "tips": ["和国内 open.bigmodel.cn 是两套独立账号体系，额度不互通，可以各领一份"],
+      "risks": ["国际站部分模型定价与国内不同，注意别误用付费模型"]
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face Inference Providers",
+      "aka": ["HF", "抱抱脸"],
+      "category": "aggregator",
+      "region": "global",
+      "url": "https://huggingface.co",
+      "claim_url": "https://huggingface.co/settings/tokens",
+      "docs_url": "https://huggingface.co/docs/inference-providers",
+      "quota": "免费账号每月约 $0.10 等值推理额度（PRO 用户 $2），可路由到 Groq/Together/Fireflies 等多家提供商；Spaces 免费 CPU 托管",
+      "validity": "每月刷新",
+      "reset": "每月 1 日",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 6.5,
+      "tags": ["模型生态", "Spaces托管", "统一路由"],
+      "signup": ["注册 https://huggingface.co 账号（邮箱）", "验证邮箱"],
+      "claim": [
+        "「Settings → Access Tokens」→ New token，类型选 Read（或 fine-grained 勾选 Inference 权限）",
+        "调用地址 https://router.huggingface.co/v1 ，OpenAI 兼容",
+        "把 Token 存入环境变量 HF_TOKEN"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://router.huggingface.co/v1",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "env": "HF_TOKEN"
+      },
+      "tips": ["真正的价值在 Spaces：免费 CPU 实例可以长期托管一个 Gradio 演示应用"],
+      "risks": ["免费推理额度很小，主要用于试跑，不能当主力"]
+    },
+    {
+      "id": "together-fireworks",
+      "name": "Together AI / Fireworks AI（赠金型）",
+      "aka": ["Together", "Fireworks"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://api.together.xyz",
+      "claim_url": "https://api.together.xyz/settings/api-keys",
+      "docs_url": "https://docs.together.ai",
+      "quota": "新用户注册赠送 $1~$5 体验金（两家政策不同）；Together 另有少量长期免费的小模型端点",
+      "validity": "赠金通常无明确到期，但用完为止",
+      "reset": "一次性",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 1,
+      "score": 6.0,
+      "tags": ["赠金", "开源模型", "微调支持"],
+      "signup": [
+        "Together：https://api.together.xyz 用 Google/邮箱注册",
+        "Fireworks：https://fireworks.ai 同样邮箱注册"
+      ],
+      "claim": [
+        "各自控制台的「API Keys」页创建 Key",
+        "Together 调用地址 https://api.together.xyz/v1 ；Fireworks 为 https://api.fireworks.ai/inference/v1",
+        "都完全兼容 OpenAI 协议"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.together.xyz/v1",
+        "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
+        "env": "TOGETHER_API_KEY"
+      },
+      "tips": ["Together 带 -Free 后缀的模型端点不消耗赠金，可以长期薅"],
+      "risks": ["赠金额度小，跑几次大模型就没了，适合做一次性评测"]
+    },
+    {
+      "id": "ovhcloud-ai-endpoints",
+      "name": "OVHcloud AI Endpoints",
+      "aka": ["OVH"],
+      "category": "llm-api",
+      "region": "global",
+      "url": "https://endpoints.ai.cloud.ovh.net",
+      "claim_url": "https://endpoints.ai.cloud.ovh.net",
+      "docs_url": "https://help.ovhcloud.com/csm/en-public-cloud-ai-endpoints",
+      "quota": "免费层提供多个开源模型（Qwen3-Coder、Llama、Mistral 等）的限速调用，欧洲机房、GDPR 合规",
+      "validity": "长期免费层",
+      "reset": "按速率限制",
+      "needs": { "card": false, "phone": false, "realname": false, "vpn": true, "student": false },
+      "difficulty": 2,
+      "score": 6.5,
+      "tags": ["欧洲机房", "GDPR", "代码模型"],
+      "signup": ["注册 OVHcloud 账号，进入 AI Endpoints 页面", "免费层可先用匿名试用 Token 体验"],
+      "claim": [
+        "在 AI Endpoints 控制台生成 API Token",
+        "每个模型有独立的 endpoint URL，页面上直接给出 curl 示例",
+        "多数模型兼容 OpenAI 协议"
+      ],
+      "verify": { "type": "manual", "note": "各模型 endpoint 不同，从控制台复制示例即可" },
+      "tips": ["对数据主权有要求的欧洲项目是个不错的备选"],
+      "risks": ["免费层限速较严，不适合批量任务"]
+    }
+  ]
+}

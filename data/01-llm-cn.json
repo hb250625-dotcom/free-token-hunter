@@ -1,0 +1,470 @@
+{
+  "pack": "国内大模型 API 免费额度",
+  "pack_id": "llm-cn",
+  "note": "国内直连，无需海外网络；绝大多数需手机号注册，部分需实名认证。",
+  "channels": [
+    {
+      "id": "zhipu-bigmodel",
+      "name": "智谱 AI 开放平台 BigModel",
+      "aka": ["GLM", "ChatGLM", "bigmodel"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://open.bigmodel.cn",
+      "claim_url": "https://open.bigmodel.cn/usercenter/resourcepack",
+      "docs_url": "https://open.bigmodel.cn/dev/api",
+      "quota": "新用户注册赠送约 2000 万 tokens 资源包；GLM-4.x-Flash 系列模型长期免费调用",
+      "validity": "赠送包官方口径为长期有效/不过期（以控制台资源包页面显示为准）",
+      "reset": "一次性发放，Flash 免费模型不消耗额度",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 1,
+      "score": 9.5,
+      "tags": ["中文强", "OpenAI兼容", "免费模型", "长期有效"],
+      "signup": [
+        "打开 https://open.bigmodel.cn ，点击右上角「登录/注册」",
+        "用手机号 + 短信验证码注册（无需信用卡）",
+        "首次登录会提示完成实名认证：个人用户填写姓名 + 身份证号即可，企业可选营业执照",
+        "实名通过后进入「控制台」"
+      ],
+      "claim": [
+        "控制台 →「资源包管理」/「用量中心」，确认新人 tokens 资源包已自动到账",
+        "左侧「API Keys」→ 新建密钥，复制形如 xxxx.yyyy 的 Key 并妥善保存",
+        "如需完全不消耗额度：调用时把 model 指定为 GLM-4-Flash / GLM-4.5-Flash 等 Flash 系列（免费）",
+        "把 Key 存入环境变量 ZHIPU_API_KEY，切勿写进代码提交到 GitHub"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "model": "glm-4-flash",
+        "env": "ZHIPU_API_KEY"
+      },
+      "tips": [
+        "Flash 系列免费且并发不低，适合做日常问答、批量文本处理的兜底模型",
+        "同一身份证/手机号只能领一次，勿尝试多开小号（会被风控封号）"
+      ],
+      "risks": ["超出免费额度后若已绑定支付方式会自动转计费，建议在控制台设置用量告警"]
+    },
+    {
+      "id": "siliconflow",
+      "name": "硅基流动 SiliconCloud",
+      "aka": ["SiliconFlow", "硅基"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://cloud.siliconflow.cn",
+      "claim_url": "https://cloud.siliconflow.cn/account/ak",
+      "docs_url": "https://docs.siliconflow.cn",
+      "quota": "新用户注册赠送约 2000 万 tokens（等值代金余额）；部分中小参数量开源模型（≤9B）长期免费",
+      "validity": "赠送额度官方称永久有效，用完为止",
+      "reset": "一次性发放；免费模型不扣额度",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 1,
+      "score": 9.0,
+      "tags": ["聚合平台", "DeepSeek", "Qwen", "OpenAI兼容", "低延迟"],
+      "signup": [
+        "打开 https://cloud.siliconflow.cn ，手机号注册并登录",
+        "按提示完成实名认证（个人实名即可，用于风控与额度发放）",
+        "进入控制台首页，查看「余额/赠送额度」是否已到账"
+      ],
+      "claim": [
+        "控制台左侧「API 密钥」→「新建 API 密钥」，复制 sk- 开头的 Key",
+        "在「模型广场」筛选标签「免费」，记下免费模型名（如 Qwen 系列小模型、GLM 小模型）",
+        "调用地址统一为 https://api.siliconflow.cn/v1 ，完全兼容 OpenAI SDK，只改 base_url 和 key",
+        "把 Key 存入环境变量 SILICONFLOW_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.siliconflow.cn/v1",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "env": "SILICONFLOW_API_KEY"
+      },
+      "tips": [
+        "一个 Key 打通 DeepSeek / Qwen / GLM / Llama 等几十个开源模型，适合做模型横向对比",
+        "邀请好友可再得额度，但请使用真实好友，刷邀请会被清算"
+      ],
+      "risks": ["免费模型列表会不定期调整，跑生产前先用接口拉一次模型列表确认"]
+    },
+    {
+      "id": "aliyun-bailian",
+      "name": "阿里云百炼（通义千问 Model Studio）",
+      "aka": ["百炼", "DashScope", "通义千问"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://bailian.console.aliyun.com",
+      "claim_url": "https://bailian.console.aliyun.com/#/model-market",
+      "docs_url": "https://help.aliyun.com/zh/model-studio/",
+      "quota": "每个模型独立赠送 100 万 tokens，覆盖 Qwen 全系 / DeepSeek / Kimi / MiniMax / GLM 等，合计可达数千万 tokens",
+      "validity": "开通后 90 天（约 3 个月）内有效",
+      "reset": "一次性发放，按模型分别计算",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 9.0,
+      "tags": ["额度最多", "多模型", "90天", "OpenAI兼容"],
+      "signup": [
+        "注册/登录阿里云账号 https://account.aliyun.com （手机号即可）",
+        "完成个人实名认证（支付宝扫码最快，1 分钟）",
+        "访问 https://bailian.console.aliyun.com ，阅读并勾选服务协议，点击「开通百炼」"
+      ],
+      "claim": [
+        "开通成功后系统自动发放各模型免费额度，在「费用与成本 → 资源包」或百炼控制台右上角「免费额度」处可查",
+        "左上角「API-KEY」→「创建我的 API-KEY」，复制 sk- 开头 Key",
+        "调用地址：https://dashscope.aliyuncs.com/compatible-mode/v1 （OpenAI 兼容模式）",
+        "把 Key 存入环境变量 DASHSCOPE_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "model": "qwen-turbo",
+        "env": "DASHSCOPE_API_KEY"
+      },
+      "tips": [
+        "额度按「模型」独立计算，多试几个模型等于多领几份 100 万",
+        "90 天到期作废，建议开通后就安排实际项目消耗，别囤着"
+      ],
+      "risks": [
+        "阿里云账号默认开通后付费，额度用尽会自动扣费：请在「费用中心 → 费用预警」设置 0 元/1 元阈值告警"
+      ]
+    },
+    {
+      "id": "baidu-qianfan",
+      "name": "百度智能云千帆大模型平台",
+      "aka": ["千帆", "ERNIE", "文心"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://console.bce.baidu.com/qianfan/overview",
+      "claim_url": "https://console.bce.baidu.com/qianfan/modelcenter/model/buildIn/list",
+      "docs_url": "https://cloud.baidu.com/doc/qianfan-api/index.html",
+      "quota": "每个模型 100 万 tokens 新人额度；ERNIE-Speed / ERNIE-Lite 等轻量模型提供免费调用（高并发）",
+      "validity": "主力模型额度多为 3 个月；免费模型长期",
+      "reset": "一次性发放；免费模型按 QPS 限流",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 8.0,
+      "tags": ["高并发", "免费模型", "第三方模型多"],
+      "signup": [
+        "注册/登录百度智能云 https://login.bce.baidu.com （手机号）",
+        "完成个人实名认证",
+        "访问千帆控制台，勾选协议后点击「立即开通」"
+      ],
+      "claim": [
+        "开通后在「概览 → 免费额度」查看各模型赠送 tokens",
+        "「应用接入 → 创建应用」获取 API Key 与 Secret Key（V2 接口可直接创建 bce-v3 类型 Key）",
+        "推荐使用 OpenAI 兼容地址：https://qianfan.baidubce.com/v2 ，鉴权用 Bearer <API Key>",
+        "把 Key 存入环境变量 QIANFAN_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://qianfan.baidubce.com/v2",
+        "model": "ernie-speed-128k",
+        "env": "QIANFAN_API_KEY"
+      },
+      "tips": ["ERNIE-Speed 免费版并发额度是国内免费模型里最高的一档，适合做高 QPS 的轻任务"],
+      "risks": ["老版 v1 接口需要 access_token 换取，新项目直接用 v2 更省事"]
+    },
+    {
+      "id": "tencent-tokenhub",
+      "name": "腾讯云大模型服务平台 TokenHub（混元）",
+      "aka": ["混元", "Hunyuan", "TokenHub"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://console.cloud.tencent.com/tokenhub",
+      "claim_url": "https://console.cloud.tencent.com/tokenhub/models",
+      "docs_url": "https://cloud.tencent.com/document/product/1823",
+      "quota": "所有语言模型 & 多模态理解模型各 100 万 tokens；图像生成 HY-Image 50 次；视频生成 50 积分；3D 生成 100 积分；Lite 版模型免费",
+      "validity": "语言/多模态 90 天；图像、视频、3D 类 365 天",
+      "reset": "每账号每模型仅可领一次（活动期至 2026-12-31）",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 8.5,
+      "tags": ["多模态", "文生图", "文生3D", "1年有效"],
+      "signup": [
+        "注册/登录腾讯云 https://cloud.tencent.com （微信扫码最快）",
+        "完成个人实名认证",
+        "进入 TokenHub 控制台，按提示「开通大模型服务平台」"
+      ],
+      "claim": [
+        "进入「模型广场」，点击右上角「新用户福利 · 免费体验」",
+        "在弹窗中勾选近期真正会用的模型（每模型仅一次机会，勿全勾浪费）→「立即领取」",
+        "也可直接首次调用某模型，平台会自动帮你领取该模型额度",
+        "「访问管理 → API 密钥管理」创建 SecretId / SecretKey，或在 TokenHub 内创建 OpenAI 兼容 Key"
+      ],
+      "verify": {
+        "type": "manual",
+        "note": "混元既有腾讯云签名 v3 接口，也有 OpenAI 兼容端点 https://api.hunyuan.cloud.tencent.com/v1 ，用后者最省事"
+      },
+      "tips": [
+        "3D 生成 100 积分 + 图像 50 次的有效期长达 365 天，是这家最香的部分",
+        "额度在主账号维度生效，子账号共享"
+      ],
+      "risks": ["免费额度用尽后若未开启后付费，服务会直接停止（不会偷偷扣费，相对安全）"]
+    },
+    {
+      "id": "volcengine-ark",
+      "name": "火山引擎方舟（豆包 Doubao）",
+      "aka": ["方舟", "Ark", "豆包", "字节"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://console.volcengine.com/ark",
+      "claim_url": "https://console.volcengine.com/ark/region:ark+cn-beijing/openManagement",
+      "docs_url": "https://www.volcengine.com/docs/82379",
+      "quota": "各模型开通即赠送免费推理额度（常见为每模型 50 万 tokens 级别）；Doubao-Lite 系列长期低成本/免费活动不断",
+      "validity": "多为开通后 30~90 天，具体以「开通管理」页显示为准",
+      "reset": "一次性发放，部分活动有每日刷新额度",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 7.5,
+      "tags": ["豆包", "多模态", "OpenAI兼容"],
+      "signup": [
+        "注册/登录火山引擎 https://console.volcengine.com （手机号）",
+        "完成实名认证（个人认证即可）",
+        "搜索并进入「火山方舟」产品页"
+      ],
+      "claim": [
+        "「开通管理」页面，勾选需要的模型点击「开通服务」，赠送额度随开通到账",
+        "「在线推理 → 创建推理接入点」，得到 ep-xxxx 形式的 Endpoint ID（调用时当 model 名用）",
+        "「API Key 管理」创建 Key，调用地址 https://ark.cn-beijing.volces.com/api/v3",
+        "把 Key 存入环境变量 ARK_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+        "model": "<你的 ep-xxxx 接入点 ID>",
+        "env": "ARK_API_KEY"
+      },
+      "tips": ["方舟的 model 参数要填「推理接入点 ID」而不是模型名，这是新手最常踩的坑"],
+      "risks": ["开通即计费模式，额度耗尽后按量扣费，务必在费用中心设预警"]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek 开放平台",
+      "aka": ["深度求索"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://platform.deepseek.com",
+      "claim_url": "https://platform.deepseek.com/usage",
+      "docs_url": "https://api-docs.deepseek.com",
+      "quota": "历史上新用户赠送约 10 元（≈500 万 tokens）体验额度；当前是否仍发放以官网为准。网页版 chat.deepseek.com 完全免费不限量",
+      "validity": "赠送额度约 1 个月",
+      "reset": "一次性",
+      "needs": { "card": false, "phone": true, "realname": false, "vpn": false, "student": false },
+      "difficulty": 1,
+      "score": 7.0,
+      "tags": ["推理强", "代码强", "价格低"],
+      "signup": [
+        "打开 https://platform.deepseek.com ，手机号或邮箱注册",
+        "登录后进入控制台，查看「用量信息」页是否有赠送余额"
+      ],
+      "claim": [
+        "左侧「API keys」→「创建 API key」，复制 sk- 开头的 Key（只显示一次）",
+        "调用地址 https://api.deepseek.com ，模型名 deepseek-chat / deepseek-reasoner",
+        "把 Key 存入环境变量 DEEPSEEK_API_KEY",
+        "如果没有赠送额度：直接用 https://chat.deepseek.com 网页版，免费无限量"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.deepseek.com",
+        "model": "deepseek-chat",
+        "env": "DEEPSEEK_API_KEY"
+      },
+      "tips": ["即使没有赠送额度，DeepSeek 也是单价最低的一档，充 10 元能用很久", "官方支持 Prompt Cache，重复前缀能再省一大截"],
+      "risks": ["赠送政策变动频繁，注册前先看官网公告，别为了额度而注册"]
+    },
+    {
+      "id": "moonshot-kimi",
+      "name": "月之暗面 Kimi 开放平台",
+      "aka": ["Moonshot", "Kimi"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://platform.moonshot.cn",
+      "claim_url": "https://platform.moonshot.cn/console/account",
+      "docs_url": "https://platform.moonshot.cn/docs",
+      "quota": "新用户注册赠送体验代金额度（常见 15 元级别，随活动调整）",
+      "validity": "以账户余额页显示的到期时间为准",
+      "reset": "一次性",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 1,
+      "score": 7.0,
+      "tags": ["长上下文", "文件理解", "OpenAI兼容"],
+      "signup": [
+        "打开 https://platform.moonshot.cn ，手机号注册登录",
+        "完成实名认证以提升速率上限（未实名有较严格的 RPM 限制）"
+      ],
+      "claim": [
+        "「用户中心 → 账户余额」确认赠送金额",
+        "「API Key 管理」→ 新建，复制 sk- 开头的 Key",
+        "调用地址 https://api.moonshot.cn/v1 ，模型如 kimi-k2-0905-preview / moonshot-v1-8k",
+        "把 Key 存入环境变量 MOONSHOT_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api.moonshot.cn/v1",
+        "model": "moonshot-v1-8k",
+        "env": "MOONSHOT_API_KEY"
+      },
+      "tips": ["超长上下文 + 文件解析接口是它的差异点，做文档问答很合适"],
+      "risks": ["未实名账号 RPM 很低，跑批量任务前先做实名"]
+    },
+    {
+      "id": "modelscope",
+      "name": "魔搭社区 ModelScope",
+      "aka": ["魔搭", "阿里达摩院开源社区"],
+      "category": "compute",
+      "region": "cn",
+      "url": "https://www.modelscope.cn",
+      "claim_url": "https://www.modelscope.cn/my/mynotebook",
+      "docs_url": "https://www.modelscope.cn/docs",
+      "quota": "新用户赠送约 36 小时免费 GPU（含 CPU）Notebook 算力；API-Inference 每日最高 2000 次免费调用；模型/数据集不限量托管与高速下载",
+      "validity": "Notebook 算力按小时计，用尽可申请追加；API 调用每日刷新",
+      "reset": "API 每日 0 点重置",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 1,
+      "score": 8.5,
+      "tags": ["免费GPU", "每日刷新", "开源模型", "OpenAI兼容"],
+      "signup": [
+        "打开 https://www.modelscope.cn ，手机号或阿里云账号登录",
+        "完成实名认证（GPU 资源必须实名后才能申请）",
+        "绑定阿里云账号以解锁免费 GPU 实例（首页会有引导按钮）"
+      ],
+      "claim": [
+        "「我的 Notebook」→ 选择「GPU 环境（免费额度）」→ 启动实例，即开始消耗 36 小时",
+        "API-Inference：「首页 → 模型库」挑一个支持推理 API 的模型，页面右侧可看到调用示例",
+        "「账号设置 → 访问令牌」创建 SDK Token（ms- 开头）",
+        "调用地址 https://api-inference.modelscope.cn/v1 ，兼容 OpenAI 协议"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://api-inference.modelscope.cn/v1",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "env": "MODELSCOPE_API_KEY"
+      },
+      "tips": [
+        "每天 2000 次免费 API 调用是长期可持续的额度，比一次性赠送更值钱",
+        "Notebook 空闲会自动释放，记得把成果保存到持久化目录"
+      ],
+      "risks": ["免费 GPU 实例有排队，高峰期可能拿不到卡"]
+    },
+    {
+      "id": "scnet-supercomputing",
+      "name": "国家超算互联网",
+      "aka": ["超算互联网", "SCNet"],
+      "category": "compute",
+      "region": "cn",
+      "url": "https://www.scnet.cn",
+      "claim_url": "https://www.scnet.cn",
+      "docs_url": "https://www.scnet.cn/ui/mall/",
+      "quota": "新用户普惠资源包：200 卡时算力 + 1000 万 tokens 大模型调用额度 + 500G 存储；完善科研画像再送 20 卡时；每邀请 1 位好友 +20 卡时（上限 1000 卡时）",
+      "validity": "以资源包页面标注为准（通常按活动期计），tokens 额度限时免费体验",
+      "reset": "一次性发放 + 邀请累积",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 8.5,
+      "tags": ["国家队", "GPU卡时", "1000万tokens", "科研友好"],
+      "signup": [
+        "打开 https://www.scnet.cn ，点击注册，手机号 + 验证码",
+        "完成实名认证（科研/高校用户可选择对应身份）",
+        "登录后在个人中心「完善科研画像」，填写研究领域与计算偏好 → 额外 +20 卡时"
+      ],
+      "claim": [
+        "首页/个人中心的「新人资源包」处点击领取 200 卡时 + 1000 万 tokens + 500G 存储",
+        "大模型调用：进入「MaaS 服务 / 大模型专区」，选择 DeepSeek、Qwen、MiniMax 等模型并创建 API Key",
+        "算力使用：进入「AI 计算平台」创建 Notebook 或提交训练作业，按卡时扣减",
+        "邀请好友链接在个人中心「邀请有礼」，每人 +20 卡时"
+      ],
+      "verify": { "type": "manual", "note": "MaaS 接口兼容 OpenAI 协议，具体 base_url 在模型详情页给出" },
+      "tips": ["同时给 tokens 和 GPU 卡时的平台很少，适合要做微调/训练的用户", "高校师生走教育身份认证通常有额外资源"],
+      "risks": ["卡时消耗速度取决于卡型，启动实例前先看清单价，别让实例空跑"]
+    },
+    {
+      "id": "iflytek-spark",
+      "name": "讯飞星火开放平台",
+      "aka": ["星火", "Spark", "科大讯飞"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://console.xfyun.cn",
+      "claim_url": "https://console.xfyun.cn/services/bmv3",
+      "docs_url": "https://www.xfyun.cn/doc/spark/Web.html",
+      "quota": "Spark Lite 版长期免费（不限 tokens，有并发限制）；其它版本新用户可领 200 万 tokens 级别体验包；语音识别/合成等 AI 能力也有免费额度",
+      "validity": "Lite 长期免费；体验包多为 90 天~1 年",
+      "reset": "一次性 + Lite 长期",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 7.0,
+      "tags": ["永久免费模型", "语音能力", "中文"],
+      "signup": [
+        "打开 https://console.xfyun.cn 注册（手机号）",
+        "完成个人实名认证",
+        "「我的应用 → 创建新应用」，填写应用名与行业"
+      ],
+      "claim": [
+        "在应用详情页找到「星火认知大模型」，选择 Lite 版点击「免费领取」",
+        "记录 APPID / APISecret / APIKey 三件套（星火 WebSocket 接口需要三件套鉴权）",
+        "也可在「星火大模型 HTTP 接口」页获取 OpenAI 兼容的 Key（http 方式更简单）",
+        "顺手在「语音合成/识别」页各领一份免费额度"
+      ],
+      "verify": { "type": "manual", "note": "星火主推 WebSocket + 三件套签名，HTTP 兼容端点为 https://spark-api-open.xf-yun.com/v1" },
+      "tips": ["除了大模型，讯飞的 TTS/ASR 免费额度也值得顺手领，做语音项目省钱"],
+      "risks": ["三件套鉴权比 OpenAI 协议复杂，建议直接用官方 SDK"]
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax 开放平台",
+      "aka": ["海螺", "abab"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://platform.minimaxi.com",
+      "claim_url": "https://platform.minimaxi.com/user-center/basic-information",
+      "docs_url": "https://platform.minimaxi.com/document",
+      "quota": "新用户注册赠送体验金（随活动调整，常见 15~50 元），覆盖文本、语音合成、视频生成等能力",
+      "validity": "多为 30 天内有效",
+      "reset": "一次性",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 6.5,
+      "tags": ["语音克隆", "视频生成", "长文本"],
+      "signup": [
+        "打开 https://platform.minimaxi.com 注册登录（手机号）",
+        "完成企业/个人实名认证（部分能力必须实名）"
+      ],
+      "claim": [
+        "「用户中心 → 账户信息」查看赠送余额与 GroupId",
+        "「接口密钥」页创建 API Key，注意 MiniMax 调用需要同时带 GroupId",
+        "语音/视频能力在「能力体验」页单独开通"
+      ],
+      "verify": { "type": "manual", "note": "需 GroupId + API Key，参见官方文档的 chatcompletion_v2 接口" },
+      "tips": ["它的语音合成与声音克隆质量在国内属第一梯队，做有声内容值得试"],
+      "risks": ["体验金有效期短，领了就尽快用"]
+    },
+    {
+      "id": "infini-ai",
+      "name": "无问芯穹 Infini-AI（GenStudio）",
+      "aka": ["无问芯穹", "Infinigence"],
+      "category": "llm-api",
+      "region": "cn",
+      "url": "https://cloud.infini-ai.com",
+      "claim_url": "https://cloud.infini-ai.com/genstudio",
+      "docs_url": "https://docs.infini-ai.com",
+      "quota": "新用户注册赠送体验 tokens（常见千万级），部分开源模型限时免费",
+      "validity": "以控制台额度页为准，一般 30~90 天",
+      "reset": "一次性",
+      "needs": { "card": false, "phone": true, "realname": true, "vpn": false, "student": false },
+      "difficulty": 2,
+      "score": 6.5,
+      "tags": ["国产算力", "开源模型", "OpenAI兼容"],
+      "signup": [
+        "打开 https://cloud.infini-ai.com 注册（手机号）并实名",
+        "进入 GenStudio 大模型服务平台"
+      ],
+      "claim": [
+        "在「模型广场」开通所需模型，赠送额度自动关联",
+        "「API Key 管理」创建 Key，base_url 为 https://cloud.infini-ai.com/maas/v1",
+        "把 Key 存入环境变量 INFINI_API_KEY"
+      ],
+      "verify": {
+        "type": "openai_compatible",
+        "base_url": "https://cloud.infini-ai.com/maas/v1",
+        "model": "qwen2.5-7b-instruct",
+        "env": "INFINI_API_KEY"
+      },
+      "tips": ["国产芯片推理，价格便宜，适合作为备用通道"],
+      "risks": ["模型上下架较快，接入前先拉模型列表"]
+    }
+  ]
+}

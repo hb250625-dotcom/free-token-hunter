@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>免费 Token 渠道看板 · Free Token Hunter</title>
+<style>
+  :root{
+    --bg:#0d1117; --bg2:#161b22; --bg3:#1c2230; --line:#283040;
+    --fg:#e6edf3; --fg2:#9aa7b6; --fg3:#6e7d8f;
+    --acc:#58a6ff; --ok:#3fb950; --warn:#d29922; --bad:#f85149; --pur:#bc8cff;
+    --r:12px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:var(--acc);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1320px;margin:0 auto;padding:28px 20px 80px}
+
+  header h1{margin:0 0 6px;font-size:24px;letter-spacing:.3px}
+  header p{margin:0;color:var(--fg2);font-size:13px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+  .stat{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+  .stat b{display:block;font-size:24px;font-weight:600;line-height:1.2}
+  .stat span{color:var(--fg3);font-size:12px}
+
+  .progress-wrap{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);
+    padding:14px 16px;margin-bottom:22px}
+  .bar{height:8px;background:var(--bg3);border-radius:99px;overflow:hidden;margin-top:8px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),#2ea043);width:0;
+    transition:width .4s ease}
+
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px;
+    position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--line)}
+  input[type=search]{flex:1;min-width:220px;background:var(--bg2);border:1px solid var(--line);
+    color:var(--fg);padding:8px 12px;border-radius:8px;outline:none;font-size:13px}
+  input[type=search]:focus{border-color:var(--acc)}
+  .chip{background:var(--bg2);border:1px solid var(--line);color:var(--fg2);padding:6px 12px;
+    border-radius:99px;cursor:pointer;font-size:12.5px;user-select:none;white-space:nowrap}
+  .chip:hover{border-color:var(--fg3);color:var(--fg)}
+  .chip.on{background:rgba(88,166,255,.15);border-color:var(--acc);color:var(--acc)}
+  select{background:var(--bg2);border:1px solid var(--line);color:var(--fg2);padding:7px 10px;
+    border-radius:8px;font-size:12.5px;outline:none}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:14px}
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;
+    display:flex;flex-direction:column;gap:10px;transition:border-color .15s,transform .15s}
+  .card:hover{border-color:#3a475c}
+  .card.done{border-color:rgba(63,185,80,.45);background:linear-gradient(180deg,rgba(63,185,80,.05),transparent)}
+  .card.skip{opacity:.45}
+
+  .chead{display:flex;align-items:flex-start;gap:10px}
+  .chead h3{margin:0;font-size:15.5px;font-weight:600;flex:1}
+  .chead h3 small{display:block;font-weight:400;font-size:11.5px;color:var(--fg3);margin-top:2px;
+    font-family:ui-monospace,Consolas,monospace}
+  .score{background:var(--bg3);border-radius:8px;padding:3px 9px;font-size:12px;color:var(--warn);
+    font-weight:600;white-space:nowrap}
+
+  .tags{display:flex;flex-wrap:wrap;gap:5px}
+  .tag{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--bg3);color:var(--fg2);
+    border:1px solid var(--line)}
+  .tag.ok{color:var(--ok);border-color:rgba(63,185,80,.3)}
+  .tag.bad{color:var(--bad);border-color:rgba(248,81,73,.3)}
+  .tag.warn{color:var(--warn);border-color:rgba(210,153,34,.3)}
+  .tag.pur{color:var(--pur);border-color:rgba(188,140,255,.3)}
+
+  .kv{font-size:12.8px;color:var(--fg2);line-height:1.65}
+  .kv b{color:var(--fg);font-weight:500}
+  .kv .k{color:var(--fg3);display:inline-block;min-width:52px}
+
+  .actions{display:flex;gap:8px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+  button{background:var(--bg3);border:1px solid var(--line);color:var(--fg2);padding:6px 12px;
+    border-radius:8px;cursor:pointer;font-size:12.5px;font-family:inherit}
+  button:hover{color:var(--fg);border-color:var(--fg3)}
+  button.pri{background:rgba(88,166,255,.14);border-color:rgba(88,166,255,.4);color:var(--acc)}
+  button.done{background:rgba(63,185,80,.16);border-color:rgba(63,185,80,.45);color:var(--ok)}
+
+  .steps{display:none;border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
+  .steps.open{display:block}
+  .steps h4{margin:12px 0 6px;font-size:12.5px;color:var(--warn);font-weight:600;
+    letter-spacing:.5px;text-transform:uppercase}
+  .steps h4:first-child{margin-top:0}
+  .steps ol{margin:0;padding-left:20px}
+  .steps li{margin-bottom:7px;font-size:13px;color:var(--fg2)}
+  .steps li::marker{color:var(--acc)}
+  .note{font-size:12.5px;color:var(--fg2);margin:4px 0 0;padding-left:16px;position:relative}
+  .note::before{content:"•";position:absolute;left:4px;color:var(--acc)}
+  .note.risk::before{content:"!";color:var(--bad);font-weight:700}
+  pre{background:#010409;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+    overflow-x:auto;font-size:11.8px;color:#a5d6ff;margin:6px 0 0;
+    font-family:ui-monospace,Consolas,"Cascadia Code",monospace}
+  .empty{text-align:center;color:var(--fg3);padding:60px 0}
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--fg3);font-size:12.5px}
+  footer b{color:var(--warn)}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--bg3);border:1px solid var(--line);color:var(--fg);padding:10px 18px;
+    border-radius:10px;opacity:0;transition:.25s;pointer-events:none;font-size:13px;z-index:99}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>免费 Token 渠道看板</h1>
+    <p id="sub">—</p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="progress-wrap">
+    <div style="display:flex;justify-content:space-between;font-size:13px">
+      <span>我的领取进度</span><span id="ptxt" style="color:var(--fg2)">0 / 0</span>
+    </div>
+    <div class="bar"><i id="pbar"></i></div>
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button onclick="resetAll()">重置进度</button>
+      <button onclick="exportProgress()">导出进度 JSON</button>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="搜索渠道 / 额度 / 标签，例如：GPU、永久免费、Gemini">
+    <span class="chip" data-f="card">免绑卡</span>
+    <span class="chip" data-f="novpn">国内直连</span>
+    <span class="chip" data-f="perm">长期有效</span>
+    <span class="chip" data-f="todo">仅未领取</span>
+    <select id="cat"><option value="">全部分类</option></select>
+    <select id="reg"><option value="">全部地区</option><option value="cn">国内</option><option value="global">海外</option></select>
+    <select id="sort">
+      <option value="score">按推荐分</option>
+      <option value="easy">按上手难度</option>
+      <option value="name">按名称</option>
+    </select>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">没有匹配的渠道，换个筛选条件试试。</div>
+
+  <footer>
+    <p><b>免责声明</b>：各平台的免费额度、有效期与领取规则变动频繁，本页数据为生成时的快照，
+       实际以官网当前公告为准。</p>
+    <p>请遵守各平台服务条款：<b>一人一账号</b>，不要用虚拟号批量注册；免费层多数<b>禁止商用</b>；
+       绑卡类云服务请务必设置<b>预算告警</b>；API Key 不要提交到 Git 仓库；免费层输入可能被用于改进模型，
+       <b>不要传敏感数据</b>。</p>
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const LS = 'fth_progress_v1';
+let state = {q:'', cat:'', reg:'', sort:'score', f:new Set()};
+let prog = load();
+
+function load(){
+  try{ return Object.assign({}, DATA.progress||{}, JSON.parse(localStorage.getItem(LS)||'{}')); }
+  catch(e){ return DATA.progress||{}; }
+}
+function persist(){ localStorage.setItem(LS, JSON.stringify(prog)); }
+function st(id){ return (prog[id]||{}).status || 'todo'; }
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),1600); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function gates(ch){
+  const n = ch.needs||{}, out=[];
+  out.push(n.card ? ['需绑卡','bad'] : ['免绑卡','ok']);
+  out.push(n.vpn ? ['需国际网络','warn'] : ['国内可直连','ok']);
+  if(n.student) out.push(['限学生','pur']);
+  if(n.realname) out.push(['需实名','']);
+  return out;
+}
+const isPerm = ch => /永久|长期|Always Free|不过期|终身/i.test((ch.validity||'')+(ch.reset||''));
+
+function render(){
+  const g = document.getElementById('grid');
+  let list = DATA.channels.filter(ch=>{
+    if(state.cat && ch.category!==state.cat) return false;
+    if(state.reg && ch.region!==state.reg) return false;
+    if(state.f.has('card') && (ch.needs||{}).card) return false;
+    if(state.f.has('novpn') && (ch.needs||{}).vpn) return false;
+    if(state.f.has('perm') && !isPerm(ch)) return false;
+    if(state.f.has('todo') && ['done','skip'].includes(st(ch.id))) return false;
+    if(state.q){
+      const blob = JSON.stringify(ch).toLowerCase();
+      if(!state.q.toLowerCase().split(/\s+/).every(w=>blob.includes(w))) return false;
+    }
+    return true;
+  });
+  if(state.sort==='score') list.sort((a,b)=>(b.score||0)-(a.score||0));
+  if(state.sort==='easy') list.sort((a,b)=>(a.difficulty||1)-(b.difficulty||1)||(b.score||0)-(a.score||0));
+  if(state.sort==='name') list.sort((a,b)=>a.name.localeCompare(b.name,'zh'));
+
+  document.getElementById('empty').style.display = list.length?'none':'block';
+  g.innerHTML = list.map(card).join('');
+  updateProgress();
+}
+
+function card(ch){
+  const s = st(ch.id);
+  const v = ch.verify||{};
+  const curl = v.type==='openai_compatible' ?
+`curl ${v.base_url}/chat/completions \\
+  -H "Authorization: Bearer $${v.env}" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"${v.model}","messages":[{"role":"user","content":"hi"}]}'` : '';
+  return `
+  <div class="card ${s}" id="c-${ch.id}">
+    <div class="chead">
+      <h3>${esc(ch.name)}<small>${esc(ch.id)} · ${esc(DATA.labels.category[ch.category]||ch.category)} · ${esc(DATA.labels.region[ch.region]||'')}</small></h3>
+      <span class="score">${(ch.score||0).toFixed(1)}</span>
+    </div>
+    <div class="tags">
+      ${gates(ch).map(([t,k])=>`<span class="tag ${k}">${t}</span>`).join('')}
+      ${(ch.tags||[]).slice(0,4).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+    </div>
+    <div class="kv">
+      <div><span class="k">额度</span> <b>${esc(ch.quota)}</b></div>
+      <div><span class="k">有效期</span> ${esc(ch.validity)}</div>
+      <div><span class="k">重置</span> ${esc(ch.reset||'-')}</div>
+    </div>
+    <div class="actions">
+      <a href="${esc(ch.claim_url||ch.url)}" target="_blank" rel="noopener"><button class="pri">前往领取 ↗</button></a>
+      <button onclick="toggle('${ch.id}')">引导步骤</button>
+      <button class="${s==='done'?'done':''}" onclick="mark('${ch.id}','done')">${s==='done'?'✔ 已领取':'标记已领'}</button>
+      <button onclick="mark('${ch.id}','skip')">跳过</button>
+    </div>
+    <div class="steps" id="s-${ch.id}">
+      ${ch.signup&&ch.signup.length?`<h4>注册步骤</h4><ol>${ch.signup.map(x=>`<li>${linkify(x)}</li>`).join('')}</ol>`:''}
+      ${ch.claim&&ch.claim.length?`<h4>领取额度 / 拿 Key</h4><ol>${ch.claim.map(x=>`<li>${linkify(x)}</li>`).join('')}</ol>`:''}
+      ${curl?`<h4>调用示例</h4><pre>${esc(curl)}</pre>
+        <button style="margin-top:8px" onclick='copy(${JSON.stringify(curl)})'>复制 curl</button>`:''}
+      ${v.note?`<h4>调用说明</h4><p class="note">${esc(v.note)}</p>`:''}
+      ${ch.tips&&ch.tips.length?`<h4>实用建议</h4>${ch.tips.map(t=>`<p class="note">${esc(t)}</p>`).join('')}`:''}
+      ${ch.risks&&ch.risks.length?`<h4 style="color:var(--bad)">风险提示</h4>${ch.risks.map(t=>`<p class="note risk">${esc(t)}</p>`).join('')}`:''}
+      ${ch.docs_url?`<h4>文档</h4><p class="note"><a href="${esc(ch.docs_url)}" target="_blank" rel="noopener">${esc(ch.docs_url)}</a></p>`:''}
+    </div>
+  </div>`;
+}
+
+function linkify(s){
+  return esc(s).replace(/(https?:\/\/[^\s，。）)、]+)/g,
+    '<a href="$1" target="_blank" rel="noopener">$1</a>');
+}
+function toggle(id){ document.getElementById('s-'+id).classList.toggle('open'); }
+function mark(id,s){
+  const cur = st(id);
+  prog[id] = {status: cur===s ? 'todo' : s, updated_at:new Date().toISOString().slice(0,19)};
+  persist(); render();
+  toast(cur===s?'已取消标记':(s==='done'?'标记为已领取':'已跳过'));
+}
+function copy(t){ navigator.clipboard.writeText(t).then(()=>toast('已复制到剪贴板')); }
+function resetAll(){ if(confirm('确定清空所有领取进度？')){ prog={}; persist(); render(); toast('进度已重置'); } }
+function exportProgress(){
+  const b = new Blob([JSON.stringify({items:prog},null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(b); a.download='progress.json'; a.click();
+  toast('已导出 progress.json，可放回 out/ 目录供 CLI 读取');
+}
+
+function updateProgress(){
+  const total = DATA.channels.length;
+  const done = DATA.channels.filter(c=>st(c.id)==='done').length;
+  document.getElementById('ptxt').textContent = `${done} / ${total}`;
+  document.getElementById('pbar').style.width = total? (done/total*100)+'%' : '0';
+}
+
+function buildStats(){
+  const chs = DATA.channels;
+  const nocard = chs.filter(c=>!(c.needs||{}).card).length;
+  const cn = chs.filter(c=>!(c.needs||{}).vpn).length;
+  const perm = chs.filter(isPerm).length;
+  document.getElementById('stats').innerHTML = [
+    ['渠道总数', chs.length, ''],
+    ['免绑卡', nocard, '只需邮箱或手机号'],
+    ['国内可直连', cn, '无需国际网络'],
+    ['长期/永久有效', perm, '非一次性额度'],
+    ['学生专属', chs.filter(c=>(c.needs||{}).student).length, '含金量最高'],
+  ].map(([k,v,d])=>`<div class="stat"><b>${v}</b><span>${k}${d?' · '+d:''}</span></div>`).join('');
+  document.getElementById('sub').textContent =
+    `${DATA.channels.length} 个渠道 · 生成于 ${DATA.generated_at} · 数据以各平台官网当前公告为准`;
+  const cats = [...new Set(chs.map(c=>c.category))];
+  document.getElementById('cat').innerHTML = '<option value="">全部分类</option>' +
+    cats.map(c=>`<option value="${c}">${DATA.labels.category[c]||c}</option>`).join('');
+}
+
+document.getElementById('q').addEventListener('input', e=>{ state.q=e.target.value; render(); });
+['cat','reg','sort'].forEach(id=>document.getElementById(id)
+  .addEventListener('change', e=>{ state[id==='cat'?'cat':id==='reg'?'reg':'sort']=e.target.value; render(); }));
+document.querySelectorAll('.chip').forEach(el=>el.addEventListener('click',()=>{
+  const f = el.dataset.f;
+  state.f.has(f) ? state.f.delete(f) : state.f.add(f);
+  el.classList.toggle('on'); render();
+}));
+
+buildStats(); render();
+</script>
+</body>
+</html>
