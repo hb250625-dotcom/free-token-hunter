@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T16:53:10",
+  "generated_at": "2026-08-13T16:52:04",
   "count": 50,
   "candidates": [
     {
@@ -12,6 +12,12 @@
       "name": "deployment.io",
       "url": "https://deployment.io",
       "desc": "Deployment.io helps developers automate deployments on AWS. On our free tier, a developer (single user) can deploy unlimited static sites, web services, and env",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Parsivex",
+      "url": "https://www.parsivex.com",
+      "desc": "Parsivex scans your AWS account for idle EC2, unattached EBS, oversized RDS, stale snapshots, NAT gateway overuse etc. Free tier provides a monthly scan for one",
       "source": "free-for-dev"
     },
     {
@@ -294,12 +300,6 @@
       "name": "Teamhood",
       "url": "https://teamhood.com/",
       "desc": "Free Project, Task, and Issue-tracking software. Supports Kanban with Swimlanes and full Scrum implementation. Has integrated time tracking. Free for five users",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Teamplify",
-      "url": "https://teamplify.com",
-      "desc": "improve team development processes with Team Analytics and Smart Daily Standup. Includes full-featured Time Off management for remote-first teams. Free for smal",
       "source": "free-for-dev"
     }
   ]
