@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T16:52:04",
+  "generated_at": "2026-08-14T16:48:32",
   "count": 50,
   "candidates": [
     {
@@ -243,6 +243,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "XFlux",
+      "url": "https://www.xfluxapi.com",
+      "desc": "X/Twitter read REST API (profiles, search, timelines) plus account monitors. Free tier: 1,000 API calls/month, 1 monitor, instant API key. HTTP webhooks on paid",
+      "source": "free-for-dev"
+    },
+    {
       "name": "Zenscrape",
       "url": "https://zenscrape.com/web-scraping-api",
       "desc": "Web scraping API with headless browsers, residentials IPs, and straightforward pricing. One thousand free API calls/month and extra credits for students and non",
@@ -294,12 +300,6 @@
       "name": "GitDailies",
       "url": "https://gitdailies.com",
       "desc": "Daily reports of your team's Commit and Pull Request activity on GitHub. Includes Push visualizer, peer recognition system, and custom alert builder. The free t",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Teamhood",
-      "url": "https://teamhood.com/",
-      "desc": "Free Project, Task, and Issue-tracking software. Supports Kanban with Swimlanes and full Scrum implementation. Has integrated time tracking. Free for five users",
       "source": "free-for-dev"
     }
   ]
