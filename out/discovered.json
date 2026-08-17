@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T16:18:11",
+  "generated_at": "2026-08-17T16:21:07",
   "count": 50,
   "candidates": [
     {
@@ -108,6 +108,12 @@
       "name": "Export SDK",
       "url": "https://exportsdk.com",
       "desc": "PDF generator API with drag-and-drop template editor that provides an SDK and no-code integrations. The free plan has 250 monthly pages, unlimited users, and th",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "finlight",
+      "url": "https://finlight.me",
+      "desc": "Real-time financial news API with entity resolution (tickers, ISIN) and sentiment tagging, available over REST, WebSocket, webhooks and an MCP server. Free tier",
       "source": "free-for-dev"
     },
     {
@@ -294,12 +300,6 @@
       "name": "GhostChat",
       "url": "https://ghostchat.dev",
       "desc": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking). Free plan includes 1 site, unlimited messages, 30-day history, Gmail threading, ca",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "GitDailies",
-      "url": "https://gitdailies.com",
-      "desc": "Daily reports of your team's Commit and Pull Request activity on GitHub. Includes Push visualizer, peer recognition system, and custom alert builder. The free t",
       "source": "free-for-dev"
     }
   ]
