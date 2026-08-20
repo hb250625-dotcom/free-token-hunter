@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T16:25:05",
+  "generated_at": "2026-08-20T16:28:27",
   "count": 50,
   "candidates": [
     {
@@ -299,7 +299,7 @@
     {
       "name": "GhostChat",
       "url": "https://ghostchat.dev",
-      "desc": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking). Free plan includes 1 site, unlimited messages, 30-day history, Gmail threading, ca",
+      "desc": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking). Free plan includes 1 site, unlimited messages, a built-in AI chatbot (10 replies/m",
       "source": "free-for-dev"
     }
   ]
