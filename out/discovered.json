@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T16:18:40",
+  "generated_at": "2026-08-24T16:30:53",
   "count": 50,
   "candidates": [
     {
@@ -195,6 +195,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "Publora",
+      "url": "https://publora.com",
+      "desc": "Publishing API: post or schedule to 10 social networks with one HTTPS call, or from an AI agent over MCP. Free forever: 15 posts/month, 3 connected accounts, al",
+      "source": "free-for-dev"
+    },
+    {
       "name": "Reducto",
       "url": "https://reducto.ai",
       "desc": "Turn any unstructured documents (PDF, XLSX, JPG, PPTX, etc.) into structured JSON data. Parse, extract data, and edit PDF forms. Free tier with 15k free credits",
@@ -294,12 +300,6 @@
       "name": "Fizzy",
       "url": "https://www.fizzy.do/",
       "desc": "Kanban-based platform for project management and issue tracking. Create public boards, set up webhooks, use card stamping, and track unlimited users - free for ",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "GhostChat",
-      "url": "https://ghostchat.dev",
-      "desc": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking). Free plan includes 1 site, unlimited messages, a built-in AI chatbot (25 replies/m",
       "source": "free-for-dev"
     }
   ]
