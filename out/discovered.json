@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-30T18:59:50",
+  "generated_at": "2026-08-31T21:16:08",
   "count": 50,
   "candidates": [
     {
@@ -159,6 +159,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "Labelixa",
+      "url": "https://labelixa.com",
+      "desc": "Zebra ZPL label rendering and validation API and browser viewer. Free tier includes an anonymous rendering quota and barcode generation with no watermark, no ca",
+      "source": "free-for-dev"
+    },
+    {
       "name": "Market Data API",
       "url": "https://www.marketdata.app",
       "desc": "Provides real-time and historical financial data for stocks, options, mutual funds, and more. The Free Forever API tier allows for 100 daily API requests at no ",
@@ -294,12 +300,6 @@
       "name": "Chanty.com",
       "url": "https://chanty.com/",
       "desc": "Chanty is another alternative to Slack. It has a free forever plan for small teams (up to 10) with unlimited public and private conversations, searchable histor",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Fizzy",
-      "url": "https://www.fizzy.do/",
-      "desc": "Kanban-based platform for project management and issue tracking. Create public boards, set up webhooks, use card stamping, and track unlimited users - free for ",
       "source": "free-for-dev"
     }
   ]
