@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T20:07:26",
+  "generated_at": "2026-09-15T19:27:39",
   "count": 50,
   "candidates": [
     {
@@ -213,12 +213,6 @@
       "source": "free-for-dev"
     },
     {
-      "name": "SerpApi",
-      "url": "https://serpapi.com/",
-      "desc": "Real-time search engine scraping API. Returns structured JSON results for Google, YouTube, Bing, Baidu, Walmart, and many other machines. The free plan includes",
-      "source": "free-for-dev"
-    },
-    {
       "name": "Geekflare API",
       "url": "https://geekflare.com/api/",
       "desc": "Geekflare API lets you scrape websites into Markdown, take screenshots, perform TLS scans and DNS lookups, test load times, and more. The free plan offers 500 A",
@@ -267,12 +261,6 @@
       "source": "free-for-dev"
     },
     {
-      "name": "Zenscrape",
-      "url": "https://zenscrape.com/web-scraping-api",
-      "desc": "Web scraping API with headless browsers, residentials IPs, and straightforward pricing. One thousand free API calls/month and extra credits for students and non",
-      "source": "free-for-dev"
-    },
-    {
       "name": "Zuplo",
       "url": "https://zuplo.com/",
       "desc": "Free API Management platform to design, build, and deploy APIs to the Edge. Add API Key authentication, rate limiting, developer documentation and Monetization ",
@@ -300,6 +288,18 @@
       "name": "Chanty.com",
       "url": "https://chanty.com/",
       "desc": "Chanty is another alternative to Slack. It has a free forever plan for small teams (up to 10) with unlimited public and private conversations, searchable histor",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Fizzy",
+      "url": "https://www.fizzy.do/",
+      "desc": "Kanban-based platform for project management and issue tracking. Create public boards, set up webhooks, use card stamping, and track unlimited users - free for ",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "GhostChat",
+      "url": "https://ghostchat.dev",
+      "desc": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking). Free plan includes 1 site, unlimited messages, a built-in AI chatbot (25 replies/m",
       "source": "free-for-dev"
     }
   ]
