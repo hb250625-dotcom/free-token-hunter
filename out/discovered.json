@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T19:29:24",
+  "generated_at": "2026-09-18T18:49:12",
   "count": 50,
   "candidates": [
     {
@@ -102,6 +102,12 @@
       "name": "Deepnote",
       "url": "https://deepnote.com",
       "desc": "A new data science notebook. Jupyter is compatible with real-time collaboration and running in the cloud. The free tier includes unlimited personal projects, un",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Estuary",
+      "url": "https://estuary.dev/",
+      "desc": "Real-time data integration platform for CDC, streaming, and batch data integration with 200+ managed connectors. Free plan includes 10 GB/month of data movement",
       "source": "free-for-dev"
     },
     {
@@ -294,12 +300,6 @@
       "name": "Fizzy",
       "url": "https://www.fizzy.do/",
       "desc": "Kanban-based platform for project management and issue tracking. Create public boards, set up webhooks, use card stamping, and track unlimited users - free for ",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "GhostChat",
-      "url": "https://ghostchat.dev",
-      "desc": "Privacy-first live chat widget for websites (~15KB, no cookies, no tracking). Free plan includes 1 site, unlimited messages, a built-in AI chatbot (25 replies/m",
       "source": "free-for-dev"
     }
   ]
