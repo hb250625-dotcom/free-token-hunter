@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T19:28:12",
+  "generated_at": "2026-09-28T21:32:03",
   "count": 50,
   "candidates": [
     {
@@ -48,12 +48,6 @@
       "name": "APIVerve",
       "url": "https://apiverve.com",
       "desc": "Get instant access to over 120+ APIs for free, built with quality, consistency, and reliability in mind. The free plan covers up to 50 API Tokens per month. (Po",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Arize AI",
-      "url": "https://arize.com/",
-      "desc": "AI observability and evaluation platform that helps teams understand, evaluate, and continuously improve AI agents and applications. Free plan includes unlimite",
       "source": "free-for-dev"
     },
     {
@@ -300,6 +294,12 @@
       "name": "Chanty.com",
       "url": "https://chanty.com/",
       "desc": "Chanty is another alternative to Slack. It has a free forever plan for small teams (up to 10) with unlimited public and private conversations, searchable histor",
+      "source": "free-for-dev"
+    },
+    {
+      "name": "Fizzy",
+      "url": "https://www.fizzy.do/",
+      "desc": "Kanban-based platform for project management and issue tracking. Create public boards, set up webhooks, use card stamping, and track unlimited users - free for ",
       "source": "free-for-dev"
     }
   ]
