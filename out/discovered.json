@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T18:57:59",
+  "generated_at": "2026-10-05T22:17:37",
   "count": 50,
   "candidates": [
     {
@@ -297,9 +297,9 @@
       "source": "free-for-dev"
     },
     {
-      "name": "Fizzy",
-      "url": "https://www.fizzy.do/",
-      "desc": "Kanban-based platform for project management and issue tracking. Create public boards, set up webhooks, use card stamping, and track unlimited users - free for ",
+      "name": "Dexio",
+      "url": "https://dexio.wiki",
+      "desc": "Shared wiki that all your AI agents read and write, so each one starts with the same context and you can see what they know. Unlimited pages and agents, free fo",
       "source": "free-for-dev"
     }
   ]
