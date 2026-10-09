@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T20:59:08",
+  "generated_at": "2026-10-09T20:29:45",
   "count": 50,
   "candidates": [
     {
@@ -189,6 +189,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "Network Data Labs",
+      "url": "https://www.networkdatalabs.com",
+      "desc": "An IP geolocation API with accuracy radius and confidence level, ASN, and Tor, known VPN, privacy relay and hosting signals. The free plan includes 1,000 reques",
+      "source": "free-for-dev"
+    },
+    {
       "name": "PDF-API.io",
       "url": "https://pdf-api.io",
       "desc": "PDF Automation API, visual template editor or HTML to PDF, dynamic data integration, and PDF rendering with an API. The free plan comes with one template, 100 P",
@@ -294,12 +300,6 @@
       "name": "Chanty.com",
       "url": "https://chanty.com/",
       "desc": "Chanty is another alternative to Slack. It has a free forever plan for small teams (up to 10) with unlimited public and private conversations, searchable histor",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Dexio",
-      "url": "https://dexio.wiki",
-      "desc": "Shared wiki that all your AI agents read and write, so each one starts with the same context and you can see what they know. Unlimited pages and agents, free fo",
       "source": "free-for-dev"
     }
   ]
