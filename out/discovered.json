@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T20:57:14",
+  "generated_at": "2026-10-14T19:55:57",
   "count": 50,
   "candidates": [
     {
@@ -225,6 +225,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "ROIC.ai",
+      "url": "https://www.roic.ai/",
+      "desc": "Financial Data API: income statements, balance sheets and cash flows, and earnings call transcripts (with audio and slides) for 68k+ companies. Free tier: 5 req",
+      "source": "free-for-dev"
+    },
+    {
       "name": "Geekflare API",
       "url": "https://geekflare.com/api/",
       "desc": "Geekflare API lets you scrape websites into Markdown, take screenshots, perform TLS scans and DNS lookups, test load times, and more. The free plan offers 500 A",
@@ -294,12 +300,6 @@
       "name": "cDox",
       "url": "https://cdox.ca",
       "desc": "Private document editor hosted in Canada. Write, format, collaborate, and publish documents with clean public links. Data is never used for AI training. Free pl",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Chanty.com",
-      "url": "https://chanty.com/",
-      "desc": "Chanty is another alternative to Slack. It has a free forever plan for small teams (up to 10) with unlimited public and private conversations, searchable histor",
       "source": "free-for-dev"
     }
   ]
