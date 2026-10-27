@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T20:51:04",
+  "generated_at": "2026-10-27T20:22:33",
   "count": 50,
   "candidates": [
     {
@@ -201,6 +201,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "PolyDoc",
+      "url": "https://polydoc.tech",
+      "desc": "REST API for HTML to PDF and screenshot generation. Including templates, PDF/A and PDF/UA output, privacy-focused, and more features. The free plan includes 150",
+      "source": "free-for-dev"
+    },
+    {
       "name": "Postman",
       "url": "https://postman.com",
       "desc": "Simplify workflows and create better APIs - faster - with Postman, a collaboration platform for API development. Use the Postman App for free forever. Postman c",
@@ -294,12 +300,6 @@
       "name": "Calendly",
       "url": "https://calendly.com",
       "desc": "Calendly is the tool for connecting and scheduling meetings. The free plan provides 1 Calendar connection per user and Unlimited sessions. Desktop and Mobile ap",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "cDox",
-      "url": "https://cdox.ca",
-      "desc": "Private document editor hosted in Canada. Write, format, collaborate, and publish documents with clean public links. Data is never used for AI training. Free pl",
       "source": "free-for-dev"
     }
   ]
