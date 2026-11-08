@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T19:49:07",
+  "generated_at": "2026-11-08T20:06:00",
   "count": 50,
   "candidates": [
     {
@@ -195,6 +195,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "nosocial Embed API",
+      "url": "https://nosocial.eu/api-docs",
+      "desc": "A free API for developers to embed public posts from X, Instagram, TikTok, YouTube, Bluesky, Threads, Facebook, Telegram, Reddit, and LinkedIn on their websites",
+      "source": "free-for-dev"
+    },
+    {
       "name": "PDF-API.io",
       "url": "https://pdf-api.io",
       "desc": "PDF Automation API, visual template editor or HTML to PDF, dynamic data integration, and PDF rendering with an API. The free plan comes with one template, 100 P",
@@ -294,12 +300,6 @@
       "name": "Metashot",
       "url": "https://metashot.io",
       "desc": "Open Graph (OG) social preview image generation API. Generate dynamic 1200×630 images for Twitter, LinkedIn and Facebook via URL params, edge-cached on Cloudfla",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Calendly",
-      "url": "https://calendly.com",
-      "desc": "Calendly is the tool for connecting and scheduling meetings. The free plan provides 1 Calendar connection per user and Unlimited sessions. Desktop and Mobile ap",
       "source": "free-for-dev"
     }
   ]
