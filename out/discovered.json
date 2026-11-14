@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T21:46:43",
+  "generated_at": "2026-11-14T20:19:28",
   "count": 50,
   "candidates": [
     {
@@ -285,6 +285,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "VPNDetection",
+      "url": "https://vpndetection.io",
+      "desc": "VPN, proxy and hosting detection API for any IP address. The free plan answers the VPN, Tor and relay flags, country and ASN, with no API key, signup or monthly",
+      "source": "free-for-dev"
+    },
+    {
       "name": "Weights & Biases",
       "url": "https://wandb.ai",
       "desc": "The developer-first MLOps platform. Build better models faster with experiment tracking, dataset versioning, and model management. Free tier for personal projec",
@@ -294,12 +300,6 @@
       "name": "XFlux",
       "url": "https://www.xfluxapi.com",
       "desc": "X/Twitter read REST API (profiles, search, timelines) plus account monitors. Free tier: 1,000 API calls/month, 1 monitor, instant API key. HTTP webhooks on paid",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "Zuplo",
-      "url": "https://zuplo.com/",
-      "desc": "Free API Management platform to design, build, and deploy APIs to the Edge. Add API Key authentication, rate limiting, developer documentation and Monetization ",
       "source": "free-for-dev"
     }
   ]
