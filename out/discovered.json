@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T00:15:12",
+  "generated_at": "2026-11-27T23:52:41",
   "count": 50,
   "candidates": [
     {
@@ -165,6 +165,12 @@
       "source": "free-for-dev"
     },
     {
+      "name": "IPDatum",
+      "url": "https://www.ipdatum.com",
+      "desc": "IPv4/IPv6 geolocation, ASN, and 12-signal VPN/proxy/Tor/cloud/anycast classification API with confidence radius. Free tier includes 1,000 requests/day without s",
+      "source": "free-for-dev"
+    },
+    {
       "name": "JSON IP",
       "url": "https://getjsonip.com",
       "desc": "Returns the Public IP address of the client it is requested from. No registration is required for the free tier. Using CORS, data can be requested using client-",
@@ -294,12 +300,6 @@
       "name": "VPNDetection",
       "url": "https://vpndetection.io",
       "desc": "VPN, proxy and hosting detection API for any IP address. The free plan answers the VPN, Tor and relay flags, country and ASN, with no API key, signup or monthly",
-      "source": "free-for-dev"
-    },
-    {
-      "name": "XFlux",
-      "url": "https://www.xfluxapi.com",
-      "desc": "X/Twitter read REST API (profiles, search, timelines) plus account monitors. Free tier: 1,000 API calls/month, 1 monitor, instant API key. HTTP webhooks on paid",
       "source": "free-for-dev"
     }
   ]
